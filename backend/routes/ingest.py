@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from datetime import datetime
-from db import supabase
+from backend.db import supabase
 from logger import log_event
 
 ingest_api = Blueprint("ingest_api", __name__)

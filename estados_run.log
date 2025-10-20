@@ -1,0 +1,22 @@
+[2025-10-14T21:35:57] INÍCIO | primeira_execucao=False | limit=30
+[2025-10-14T21:35:57] [DF] fonte: https://dodf.df.gov.br/
+[2025-10-14T21:36:43] [DF] links=30 ok=24 erros=6 matches=0
+[2025-10-14T21:36:43] [GO] fonte: https://diariooficial.abc.go.gov.br/
+[2025-10-14T21:36:58] [GO] links=21 ok=18 erros=3 matches=0
+[2025-10-14T21:36:58] [SP] fonte: https://doe.sp.gov.br/
+[2025-10-14T21:37:09] [SP] links=10 ok=9 erros=1 matches=0
+[2025-10-14T21:37:09] [RJ] fonte: https://www.rj.gov.br/servico/acessar-o-diario-oficial-do-digital-da-ioerj78
+[2025-10-14T21:37:09] [RJ] links=0 ok=0 erros=0 matches=0
+[2025-10-14T21:37:09] [RS] fonte: https://www.diariooficial.rs.gov.br/
+[2025-10-14T21:37:11] [RS] links=0 ok=0 erros=0 matches=0
+[2025-10-14T21:37:11] [TO] fonte: https://diariooficial.to.gov.br/
+[2025-10-14T21:37:33] [TO] links=28 ok=28 erros=0 matches=0
+[2025-10-14T21:37:33] [AC] fonte: https://diario.ac.gov.br/
+[2025-10-14T21:37:33] [AC] links=0 ok=0 erros=1 matches=0
+[2025-10-14T21:37:33] [RN] fonte: https://www.diariooficial.rn.gov.br/dei/dorn3/
+[2025-10-14T21:38:52] [RN] links=20 ok=16 erros=4 matches=0
+[2025-10-14T21:38:52] [BA] fonte: https://www.ba.gov.br/egba/
+[2025-10-14T21:39:24] [BA] links=30 ok=29 erros=1 matches=0
+[2025-10-14T21:39:24] SUMÁRIO | links=139 ok=124 erros=16 matches=0
+[2025-10-14T21:39:24] EMAIL: não enviado (sem novidades)
+[2025-10-14T21:39:24] FIM
