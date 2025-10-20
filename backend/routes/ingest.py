@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from datetime import datetime
-from backend.db import supabase
+from backend.db import get_supabase
 from logger import log_event
 
 ingest_api = Blueprint("ingest_api", __name__)
@@ -17,7 +17,8 @@ def ingest():
         "raw": {"example": True},
     }
 
-    res = supabase.table("registry_item").insert(item).execute()
+    client = get_supabase()
+    res = client.table("registry_item").insert(item).execute()
     log_event("system", "ingest", "registry_item", {"count": len(res.data)})
 
     return jsonify({"status": "ok", "inserted": len(res.data)})

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from backend.db import supabase
+from backend.db import get_supabase
 
 log_api = Blueprint("log_api", __name__)
 
@@ -11,5 +11,6 @@ def log_test():
         "entity": "connectivity",
         "payload": {"ok": True}
     }
-    res = supabase.table("event_log").insert(payload).execute()
+    client = get_supabase()
+    res = client.table("event_log").insert(payload).execute()
     return jsonify({"status": "ok", "inserted": len(res.data)})

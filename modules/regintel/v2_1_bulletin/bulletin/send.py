@@ -1,13 +1,15 @@
 import os
-from backend.db import supabase
-from logger import log_event
 import requests
+
+from backend.db import get_supabase
+from logger import log_event
 
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 FROM_EMAIL = os.getenv("FROM_EMAIL", "no-reply@hb-advisory.com.br")
 
 def get_latest_items(limit=5):
-    res = supabase.table("registry_item").select("*").order("published_at", desc=True).limit(limit).execute()
+    client = get_supabase()
+    res = client.table("registry_item").select("*").order("published_at", desc=True).limit(limit).execute()
     return res.data
 
 def send_email(to_email: str, subject: str, html: str):
