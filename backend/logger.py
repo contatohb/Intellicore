@@ -1,18 +1,22 @@
-import logging, os
-from datetime import datetime
+import os
+import requests
 
-LOG_FILE = os.path.join(os.path.dirname(__file__), "intellicore.log")
+MAILGUN_DOMAIN = os.getenv("hb-advisory.com.br")
+MAILGUN_API_KEY = os.getenv("5e1ffd43-1ff22346")
+MAILGUN_SENDER = os.getenv("MAILGUN_SENDER", f"no-reply@hb-advisory.com.br")
+MAILGUN_BASE_URL = os.getenv("MAILGUN_BASE_URL", "https://api.mailgun.net/v3")
 
-logging.basicConfig(
-    filename=LOG_FILE,
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
-
-def log_event(actor: str, action: str, entity: str, payload: dict = None):
-    entry = f"{actor} | {action} | {entity} | {payload or ''}"
-    logging.info(entry)
-    print(entry)
-
-if __name__ == "__main__":
-    log_event("system", "startup", "logger")
+def send_email(to: str, subject: str, text: str = "", html: str = None):
+    assert MAILGUN_DOMAIN and MAILGUN_API_KEY, "MAILGUN_* env vars missing"
+    url = f"{MAILGUN_BASE_URL}/{MAILGUN_DOMAIN}/messages"
+    data = {
+        "from": MAILGUN_SENDER,
+        "to": [to],
+        "subject": subject,
+        "text": text or " ",
+    }
+    if html:
+        data["html"] = html
+    resp = requests.post(url, auth=("api", MAILGUN_API_KEY), data=data, timeout=15)
+    resp.raise_for_status()
+    return resp.json()
