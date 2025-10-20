@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "crons": [
+    { "name": "ingest_metrics", "pattern": "0 */6 * * *", "endpoint": "/functions/v1/ingest_metrics" },
+    { "name": "schedule_broadcast", "pattern": "*/30 * * * *", "endpoint": "/functions/v1/schedule_broadcast" }
+  ]
+}
