@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from db import supabase
+from backend.db import supabase
 
 test_db = Blueprint("test_db", __name__)
 
