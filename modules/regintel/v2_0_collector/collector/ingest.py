@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from .sources.dou import fetch_dou_items
-from db import supabase
+from backend.db import supabase
 from logger import log_event
 
 def ingest_recent(days: int = 1):

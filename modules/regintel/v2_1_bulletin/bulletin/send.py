@@ -1,5 +1,5 @@
 import os
-from db import supabase
+from backend.db import supabase
 from logger import log_event
 import requests
 
