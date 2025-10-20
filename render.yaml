@@ -1,18 +1,16 @@
 services:
   - type: web
-    name: intellicore-backend
+    name: intellicore
     env: python
-    plan: free
+    plan: starter
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: gunicorn app:app --chdir backend
+    startCommand: python -m gunicorn backend.app:app
     envVars:
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_ANON_KEY
         sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
-        sync: false
-      - key: SENDGRID_API_KEY
         sync: false
       - key: FROM_EMAIL
         sync: false

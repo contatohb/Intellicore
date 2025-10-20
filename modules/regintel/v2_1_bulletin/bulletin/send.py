@@ -1,11 +1,6 @@
-import os
-import requests
-
 from backend.db import get_supabase
+from backend.logger import send_email as send_mailgun_email
 from logger import log_event
-
-SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
-FROM_EMAIL = os.getenv("FROM_EMAIL", "no-reply@hb-advisory.com.br")
 
 def get_latest_items(limit=5):
     client = get_supabase()
@@ -13,22 +8,7 @@ def get_latest_items(limit=5):
     return res.data
 
 def send_email(to_email: str, subject: str, html: str):
-    if not SENDGRID_API_KEY:
-        raise RuntimeError("SENDGRID_API_KEY não configurada.")
-    r = requests.post(
-        "https://api.sendgrid.com/v3/mail/send",
-        headers={
-            "Authorization": f"Bearer {SENDGRID_API_KEY}",
-            "Content-Type": "application/json",
-        },
-        json={
-            "personalizations": [{"to": [{"email": to_email}]}],
-            "from": {"email": FROM_EMAIL},
-            "subject": subject,
-            "content": [{"type": "text/html", "value": html}],
-        },
-    )
-    r.raise_for_status()
+    send_mailgun_email(to_email, subject, html=html)
     return True
 
 def run_bulletin(to_email="huddsong@gmail.com"):
