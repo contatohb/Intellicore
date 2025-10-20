@@ -1,20 +1,33 @@
+import os, logging, importlib, pkgutil
 from flask import Flask, jsonify
-
-from backend.routes import register_blueprints
-
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    register_blueprints(app)
 
-    @app.route("/")
-    def index():
-        return jsonify({"status": "Backend online", "version": "1.0.0"})
+    @app.get("/health")
+    def health():
+        # nunca depende de nada externo
+        return jsonify(ok=True), 200
 
+    # Registro tolerante a falhas
+    if os.getenv("REGISTER_BLUEPRINTS", "1") == "1":
+        try:
+            register_blueprints(app)
+        except Exception as e:
+            logging.exception("Blueprint bootstrap non-fatal: %s", e)
     return app
 
+def register_blueprints(app: Flask):
+    from backend import routes  # pacote com as rotas
+    for _, name, _ in pkgutil.iter_modules(routes.__path__):
+        if name.startswith("_") or name == "health":
+            continue
+        mod = importlib.import_module(f"backend.routes.{name}")
+        bp = getattr(mod, "bp", None) or getattr(mod, f"{name}_api", None)
+        if bp is None:
+            logging.warning("Skipping %s: no blueprint named 'bp' or '%s_api'", name, name)
+            continue
+        app.register_blueprint(bp)
+        logging.info("Registered blueprint: %s", name)
 
 app = create_app()
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
