@@ -1,26 +1,17 @@
-import os
 from flask import Flask, jsonify
-from dotenv import load_dotenv
-from supabase import create_client, Client
+from backend.routes import log_event, test_db, bulletin, ingest
 
-load_dotenv()
 app = Flask(__name__)
 
-SUPABASE_URL = os.getenv("https://wuadkgmggkmyglxpxeyh.supabase.co")
-SUPABASE_KEY = os.getenv("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1YWRrZ21nZ2tteWdseHB4ZXloIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MDk1NzU4NywiZXhwIjoyMDc2NTMzNTg3fQ.Qroz39JExkH4tXofSIqzZMQNtQDAv5rPSR_OJdeH4FI")
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+# Registrar Blueprints
+app.register_blueprint(log_event.bp)
+app.register_blueprint(test_db.bp)
+app.register_blueprint(bulletin.bp)
+app.register_blueprint(ingest.bp)
 
-from backend.routes.log_event import log_api
-from backend.routes.bulletin import bulletin_api
-from backend.routes.test_db import test_db_api
-
-app.register_blueprint(log_api, url_prefix="/log")
-app.register_blueprint(bulletin_api, url_prefix="/bulletin")
-app.register_blueprint(test_db_api, url_prefix="/test")
-
-@app.route("/health", methods=["GET"])
-def health():
-    return jsonify({"status": "ok"}), 200
+@app.route('/')
+def index():
+    return jsonify({"status": "Backend online", "version": "1.0.0"})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
+    app.run(host="0.0.0.0", port=5000)
