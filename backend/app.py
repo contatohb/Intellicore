@@ -1,19 +1,20 @@
 from flask import Flask, jsonify
-from backend.routes import log_event, test_db, bulletin, ingest
 
-app = Flask(__name__)
+from backend.routes import register_blueprints
 
-# Registrar Blueprints
-app.register_blueprint(log_event.bp)
-app.register_blueprint(test_db.bp)
-app.register_blueprint(bulletin.bp)
-app.register_blueprint(ingest.bp)
 
-@app.route('/')
-def index():
-    return jsonify({"status": "Backend online", "version": "1.0.0"})
+def create_app() -> Flask:
+    app = Flask(__name__)
+    register_blueprints(app)
+
+    @app.route("/")
+    def index():
+        return jsonify({"status": "Backend online", "version": "1.0.0"})
+
+    return app
+
+
+app = create_app()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
-from backend.routes.health import health_api
-app.register_blueprint(health_api, url_prefix="/")

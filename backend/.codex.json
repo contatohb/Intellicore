@@ -1,0 +1,29 @@
+{
+  "blueprints": [
+    {
+      "module": "backend.routes.health",
+      "name": "health_api",
+      "url_prefix": "/"
+    },
+    {
+      "module": "backend.routes.log_event",
+      "name": "log_api",
+      "url_prefix": "/"
+    },
+    {
+      "module": "backend.routes.test_db",
+      "name": "test_db",
+      "url_prefix": "/"
+    },
+    {
+      "module": "backend.routes.bulletin",
+      "name": "bulletin_api",
+      "url_prefix": "/"
+    },
+    {
+      "module": "backend.routes.ingest",
+      "name": "ingest_api",
+      "url_prefix": "/"
+    }
+  ]
+}
