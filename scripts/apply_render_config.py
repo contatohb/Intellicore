@@ -27,6 +27,7 @@ except ModuleNotFoundError as exc:  # pragma: no cover - dependência clara
 
 
 API_BASE = "https://api.render.com/v1"
+DEFAULT_ENV_GROUP_NAME = "intellicore-shared"
 
 
 class RenderApiError(RuntimeError):
@@ -86,6 +87,57 @@ def locate_service(api_key: str, name_or_slug: str) -> dict:
     raise RenderApiError(f"Serviço '{name_or_slug}' não encontrado na conta Render.")
 
 
+def list_env_groups(api_key: str, owner_id: str) -> Iterable[dict]:
+    data = http_request("GET", f"/env-groups?ownerId={owner_id}", api_key=api_key)
+    if isinstance(data, list):
+        for item in data:
+            if isinstance(item, dict) and "envGroup" in item:
+                yield item["envGroup"]
+            elif isinstance(item, dict):
+                yield item
+
+
+def ensure_env_group(api_key: str, owner_id: str, name: str, env_vars: Dict[str, str]) -> dict:
+    for group in list_env_groups(api_key, owner_id):
+        if group.get("name") == name:
+            # Atualiza env vars existentes
+            update_env_group_vars(api_key, group["id"], env_vars)
+            return group
+    created = http_request(
+        "POST",
+        "/env-groups",
+        api_key=api_key,
+        data={"name": name, "ownerId": owner_id},
+    )
+    if not isinstance(created, dict):
+        raise RenderApiError("Falha ao criar Environment Group.")
+    env_group_id = created["id"]
+    update_env_group_vars(api_key, env_group_id, env_vars)
+    return created
+
+
+def update_env_group_vars(api_key: str, env_group_id: str, env_vars: Dict[str, str]) -> None:
+    for key, value in env_vars.items():
+        http_request(
+            "PUT",
+            f"/env-groups/{env_group_id}/env-vars/{key}",
+            api_key=api_key,
+            data={"value": value, "type": "general"},
+        )
+
+
+def attach_env_group(api_key: str, env_group_id: str, service_id: str) -> None:
+    info = http_request("GET", f"/env-groups/{env_group_id}", api_key=api_key)
+    links = (info or {}).get("serviceLinks", []) if isinstance(info, dict) else []
+    if any(link.get("id") == service_id for link in links):
+        return
+    http_request(
+        "POST",
+        f"/env-groups/{env_group_id}/services/{service_id}",
+        api_key=api_key,
+    )
+
+
 def load_blueprint(config_path: str) -> dict:
     with open(config_path, "r", encoding="utf-8") as fp:
         data = yaml.safe_load(fp)
@@ -135,6 +187,11 @@ def main() -> None:
         action="store_true",
         help="Prioriza valores já exportados no ambiente em vez do arquivo .env.",
     )
+    parser.add_argument(
+        "--env-group",
+        default=os.environ.get("RENDER_ENV_GROUP", DEFAULT_ENV_GROUP_NAME),
+        help="Nome do Environment Group que deve ser sincronizado (default: intellicore-shared).",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Mostra alterações sem aplicar.")
     args = parser.parse_args()
 
@@ -175,6 +232,19 @@ def main() -> None:
             continue
         env_map[key] = value
 
+    # Provisiona / atualiza Environment Group
+    env_group_name = args.env_group
+    if args.dry_run:
+        print(f"[dry-run] Atualizaria Environment Group '{env_group_name}' e anexaria ao serviço.")
+    else:
+        env_group = ensure_env_group(
+            api_key=args.api_key,
+            owner_id=service["ownerId"],
+            name=env_group_name,
+            env_vars=env_map,
+        )
+        attach_env_group(api_key=args.api_key, env_group_id=env_group["id"], service_id=service["id"])
+
     # Atualiza comandos
     patch_body = {
         "serviceDetails": {
@@ -201,18 +271,21 @@ def main() -> None:
         )
 
     # Atualiza env vars
-    for key, value in env_map.items():
-        body = {"value": value, "type": "general"}
-        print(f"Definindo variável {key}...")
-        if args.dry_run:
-            print(json.dumps(body, indent=2, ensure_ascii=False))
-            continue
-        http_request(
-            "PUT",
-            f"/services/{service['id']}/env-vars/{key}",
-            api_key=args.api_key,
-            data=body,
-        )
+    if args.env_group:
+        print("Variáveis sincronizadas via Environment Group; sem alterações diretas no serviço.")
+    else:
+        for key, value in env_map.items():
+            body = {"value": value, "type": "general"}
+            print(f"Definindo variável {key}...")
+            if args.dry_run:
+                print(json.dumps(body, indent=2, ensure_ascii=False))
+                continue
+            http_request(
+                "PUT",
+                f"/services/{service['id']}/env-vars/{key}",
+                api_key=args.api_key,
+                data=body,
+            )
 
     print("Concluído.")
 

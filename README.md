@@ -19,6 +19,7 @@ Módulos: RegIntel 2.0 (coleta) e 2.1 (boletins).
 O workflow `.github/workflows/render-sync.yml` roda em pushes para `main` (ou manualmente via **Run workflow**). Ele:
 
 1. Lê `render.yaml` e o script `scripts/apply_render_config.py` para sincronizar comandos/variáveis no serviço `intellicore`.
+   - As variáveis são gravadas no Environment Group `intellicore-shared` e associadas ao serviço automaticamente.
 2. Dispara um deploy via API (`POST /services/<id>/deploys`).
 
 ### Secrets necessários
@@ -35,5 +36,7 @@ Configure em *Settings → Secrets and variables → Actions* os seguintes valor
 | `MAILGUN_API_KEY` | API key ativa (full access). |
 | `MAILGUN_SENDER` | Endereço remetente, ex.: `no-reply@hb-advisory.com.br`. |
 | `MAILGUN_BASE_URL` | Geralmente `https://api.mailgun.net/v3`. |
+
+Caso utilize outro Environment Group, defina `RENDER_ENV_GROUP` no workflow ou no ambiente antes de rodar `scripts/apply_render_config.py`.
 
 Após definir os secrets, qualquer `git push origin main` disparará o pipeline; o deploy só depende dos secrets estarem válidos.
