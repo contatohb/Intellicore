@@ -3,8 +3,8 @@ services:
     name: intellicore
     env: python
     plan: starter
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: python -m gunicorn backend.app:app
+    buildCommand: python -m pip install --upgrade pip && python -m pip install -r backend/requirements.txt
+    startCommand: python -m pip install -r backend/requirements.txt && python -m gunicorn backend.app:app --preload --workers 2 --threads 4 --timeout 120 --graceful-timeout 30 --log-level info
     envVars:
       - key: SUPABASE_URL
         sync: false
