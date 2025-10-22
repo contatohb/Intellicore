@@ -36,7 +36,10 @@ Configure em *Settings → Secrets and variables → Actions* os seguintes valor
 | `MAILGUN_API_KEY` | API key ativa (full access). |
 | `MAILGUN_SENDER` | Endereço remetente, ex.: `no-reply@hb-advisory.com.br`. |
 | `MAILGUN_BASE_URL` | Geralmente `https://api.mailgun.net/v3`. |
+| `ALERT_EMAIL` | E-mail que receberá notificações de falha (pode ser o mesmo do `FROM_EMAIL`). |
 
 Caso utilize outro Environment Group, defina `RENDER_ENV_GROUP` no workflow ou no ambiente antes de rodar `scripts/apply_render_config.py`.
+
+O workflow também executa smoke tests (`/health` e `/test-db`) após o deploy e dispara um aviso via Mailgun se algo falhar.
 
 Após definir os secrets, qualquer `git push origin main` disparará o pipeline; o deploy só depende dos secrets estarem válidos.
