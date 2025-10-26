@@ -8,10 +8,23 @@ export default async function Home({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'home' });
 
-  const proofPoints = t<any>('proofPoints', { returnObjects: true }) as string[];
-  const highlights = t<any>('highlights', { returnObjects: true }) as { title: string; description: string; href: string }[];
-  const marketingPoints = t<any>('marketing.points', { returnObjects: true }) as string[];
-  const statusItems = t<any>('status.items', { returnObjects: true }) as string[];
+  const toStringArray = (value: unknown): string[] =>
+    Array.isArray(value) ? value.map((item) => String(item ?? '')) : [];
+
+  const proofPoints = toStringArray(t.raw('proofPoints'));
+  const highlightsRaw = t.raw('highlights') as unknown;
+  const highlights = Array.isArray(highlightsRaw)
+    ? highlightsRaw.map((item) => {
+        const candidate = item as Record<string, unknown>;
+        return {
+          title: String(candidate?.title ?? ''),
+          description: String(candidate?.description ?? ''),
+          href: String(candidate?.href ?? '/')
+        };
+      })
+    : [];
+  const marketingPoints = toStringArray(t.raw('marketing.points'));
+  const statusItems = toStringArray(t.raw('status.items'));
 
   return (
     <>
