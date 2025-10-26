@@ -1,6 +1,6 @@
 {
   "header": {
-    "tagline": "Inteligência | Ciência | Estratégia",
+    "tagline": "by HB Advisory",
     "cta": "Fale com a equipe",
     "menu": {
       "home": "Início",
@@ -13,83 +13,55 @@
   },
   "home": {
     "hero": {
-      "badge": "Conectando dados, ciência e estratégia",
-      "title": "Inteligência aplicada à inovação e conformidade.",
-      "subtitle": "A HB Advisory integra dados, ciência e tecnologia para transformar a complexidade regulatória e técnica em inteligência estratégica e tomada de decisão.",
-      "primaryCta": "Conheça o ecossistema",
+      "badge": "HB Intellicore",
+      "title": "O núcleo que abriga todos os hubs de inteligência HB.",
+      "subtitle": "Sob o guarda-chuva do HB Intellicore, cada hub nasce com dados governados, identidade unificada e infraestrutura pronta para escalar.",
+      "primaryCta": "Explorar o HB Intellicore",
       "primaryHref": "/intellicore",
-      "secondaryCta": "Fale com a equipe",
-      "secondaryHref": "/contato"
+      "secondaryCta": "Conhecer o HB Agro Intel",
+      "secondaryHref": "/agro-intel"
     },
-    "value": {
-      "title": "O que a HB Advisory entrega",
+    "ecosystem": {
+      "title": "O guarda-chuva principal",
+      "paragraphs": [
+        "O HB Intellicore é o backbone que hospeda todos os nossos hubs e módulos especializados. Ali consolidamos pipelines de dados, governança, identidade digital e infraestrutura de IA para que cada hub compartilhe a mesma base confiável.",
+        "Clientes ativam primeiro o hub de maior urgência e expandem na sequência, sem refazer integrações ou processos. Tudo já nasce preparado para reuso, auditoria e evolução conjunta."
+      ],
+      "pills": [
+        "Governança, segurança e auditoria nativas",
+        "Hubs parametrizáveis por setor ou processo",
+        "Roadmap contínuo alinhado com clientes fundadores"
+      ]
+    },
+    "hubs": {
+      "title": "Hubs que vivem dentro do HB Intellicore",
       "items": [
         {
-          "title": "Inteligência Técnica e de Mercado",
-          "description": "Monitoramento contínuo de tendências regulatórias, tecnológicas e produtivas para orientar portfólios de inovação."
+          "title": "HB Agro Intel",
+          "description": "Primeiro hub do ecossistema, com módulos regulatórios e operacionais para o agronegócio.",
+          "cta": "Abrir hotsite",
+          "href": "/agro-intel"
         },
         {
-          "title": "Automação e Dados",
-          "description": "Plataformas, dashboards e pipelines prontos para integrar dados públicos, corporativos e científicos."
-        },
-        {
-          "title": "Conexão com Sistemas Oficiais",
-          "description": "Integração com órgãos reguladores, frameworks corporativos e fluxos internos para decisões seguras."
+          "title": "Próximos hubs",
+          "description": "Saúde, life sciences, sustentabilidade e ESG estão no roadmap do HB Intellicore e evoluem com o conselho de clientes."
         }
       ]
     },
-    "intellicore": {
-      "title": "HB Intellicore",
-      "description": "O núcleo que transforma dados técnicos, legais e operacionais em sistemas inteligentes e colaborativos.",
-      "cta": "Entenda o ecossistema",
-      "href": "/intellicore"
-    },
-    "agro": {
-      "title": "HB Agro Intel",
-      "description": "Primeiro hub ativo do ecossistema HB Intellicore. Digitaliza o registro de produtos, profissionais e decisões do agronegócio.",
-      "points": [
-        "Consolidação de dossiês e submissões técnicas",
-        "Painéis de status e alertas regulatórios",
-        "Integração com MAPA, ANVISA, IBAMA e ERPs"
+    "agroPreview": {
+      "title": "HB Agro Intel em destaque",
+      "description": "Nosso primeiro hub ativo dentro do HB Intellicore, com identidade própria e evolução contínua.",
+      "bullets": [
+        "Módulo 1 focado em registro e compliance regulatório",
+        "Módulo 2 (em design) para produtores e agrônomos",
+        "Integrações previstas: MAPA, ANVISA, IBAMA, ERPs e SSO corporativo"
       ],
-      "cta": "Explorar o HB Agro Intel",
+      "cta": "Ver detalhamento do HB Agro Intel",
       "href": "/agro-intel"
     },
-    "how": {
-      "title": "Da complexidade ao insight acionável",
-      "steps": [
-        {
-          "title": "Coleta e normalização",
-          "description": "Pipelines capturam, limpam e estruturam dados públicos, privados e científicos."
-        },
-        {
-          "title": "Conexão com legislação",
-          "description": "Regras e requisitos são atualizados automaticamente, com rastreabilidade completa."
-        },
-        {
-          "title": "Painéis e alertas",
-          "description": "Dashboards entregam indicadores-chave enquanto notificações proativas reduzem retrabalho."
-        },
-        {
-          "title": "Integração corporativa",
-          "description": "APIs e conectores levam a inteligência para ERPs, BI e fluxos internos."
-        }
-      ]
-    },
-    "integrations": {
-      "title": "Potencial de integração",
-      "items": ["ANVISA", "MAPA", "IBAMA", "Órgãos estaduais", "ERPs corporativos"],
-      "note": "Integrações ativadas conforme o SDP de cada cliente."
-    },
-    "authority": {
-      "title": "Liderança técnica",
-      "quote": "A inteligência é o elo que conecta ciência, legislação e tecnologia — para transformar informação em direção e inovação em impacto.",
-      "cta": "Conheça a trajetória do fundador",
-      "href": "/sobre"
-    },
     "cta": {
-      "title": "Vamos desenhar sua inteligência setorial",
-      "subtitle": "Conte com um ecossistema escalável para acelerar inovação, compliance e competitividade.",
+      "title": "Vamos ativar ou expandir seu hub dentro do HB Intellicore",
+      "subtitle": "Mapeamos juntos prioridades, integrações e módulos iniciais — sempre ancorados no mesmo backbone.",
       "cta": "Agendar conversa",
       "href": "/contato"
     }
@@ -98,17 +70,17 @@
     "manifest": {
       "title": "Inteligência, legislação e tecnologia conectadas",
       "paragraphs": [
-        "A HB Advisory é uma plataforma de inteligência e estratégia criada por Hudson Viana Borges, executivo com mais de 20 anos em ciências ambientais, agroquímicos, biotecnologia e pesquisa aplicada.",
+        "A HB Advisory é uma plataforma de inteligência e estratégia criada por Hudson Borges, executivo com mais de 20 anos em ciências ambientais, agroquímicos, biotecnologia e pesquisa aplicada.",
         "Transformamos dados públicos e privados em direcionamento acionável, com pipelines auditáveis, documentação viva e colaboração ativa com as equipes dos clientes."
       ]
     },
     "founder": {
-      "title": "Hudson Viana Borges",
+      "title": "Hudson Borges",
       "highlights": [
         "Médico veterinário pela Universidade de Brasília, com especialização em Proteção de Cultivos (UniFeob)",
         "Formações internacionais em Toxicologia Avançada (University of Guelph) e Regulatory Science (SCAHT)",
         "Liderança em Syngenta, Bayer, Envu e Bioagri (Mérieux NutriSciences) com projetos LATAM",
-        "Experiência multicultural em Suíça, Alemanha, EUA, Canadá, França, Reino Unido e LATAM"
+        "Experiência multicultural em Suíça, Alemanha, EUA, Canadá, França, Reino Unido e América Latina"
       ],
       "quote": "A HB Advisory representa a maturidade de uma visão: a de que a inteligência é o elo que conecta ciência, legislação e tecnologia — para transformar informação em direção e inovação em impacto.",
       "cta": "Fale com Hudson"
@@ -118,7 +90,7 @@
     "values": [
       {
         "title": "Excelência técnica",
-        "description": "Rigor científico e metodológico como padrão." 
+        "description": "Rigor científico e metodológico como padrão."
       },
       {
         "title": "Integração",
@@ -168,144 +140,232 @@
   "intellicore": {
     "hero": {
       "title": "HB Intellicore",
-      "subtitle": "Plataforma que une dados, automação e conhecimento para transformar operações regulatórias e técnicas em ecossistemas inteligentes."
+      "subtitle": "Guarda-chuva central que conecta dados, automação e IA para todos os hubs HB."
     },
     "core": {
-      "title": "Plataforma de dados e automação",
-      "description": "Integra dados técnicos, legais e operacionais; gera insights, orquestra fluxos e habilita módulos especializados."
+      "title": "Backbone preparado para múltiplos hubs",
+      "description": "Camadas desacopladas — dados, regras, analytics e aplicações — permitem lançar novos módulos mantendo governança, performance e reuso de integrações."
     },
     "architecture": {
       "title": "Camadas do ecossistema",
       "layers": [
         {
-          "title": "Camada de dados",
-          "description": "Coleta, normalização e versionamento de fontes públicas e privadas."
+          "title": "Dados",
+          "description": "Coleta, normalização, versionamento e catálogo unificado com metadados compartilhados."
         },
         {
-          "title": "Camada de regras",
-          "description": "Legislação, requisitos e políticas corporativas com rastreabilidade."
+          "title": "Regras e legislação",
+          "description": "Mapeamento de requisitos, políticas internas, cadastros e workflows corporativos."
         },
         {
-          "title": "Camada de analytics e IA",
-          "description": "Modelos preditivos, painéis e copilotos focados em decisão."
+          "title": "Analytics e IA",
+          "description": "Modelos preditivos, copilotos e painéis orientados ao negócio e à tomada de decisão."
         },
         {
-          "title": "Camada de aplicações",
-          "description": "Módulos, hubs e APIs adaptáveis por setor ou processo."
+          "title": "Aplicações",
+          "description": "Hubs, APIs e experiências customizadas por setor, com identidade visual e roadmap próprios."
         }
       ]
     },
     "connections": {
-      "title": "Conexões e integrações",
+      "title": "Conexões core",
       "items": [
         "Sistemas governamentais de registro e fiscalização",
-        "Plataformas corporativas (ERP, BI, GED, CRM)",
-        "Bases científicas e de inovação aberta",
-        "Parceiros estratégicos e associações setoriais"
+        "Infraestrutura corporativa (ERP, BI, GED, CRM, SSO)",
+        "Bases científicas, dados abertos e provedores privados",
+        "Parceiros estratégicos e conselho de clientes fundadores"
       ],
-      "note": "Ativação conforme o SDP e a governança de cada cliente."
+      "note": "Todas as integrações são versionadas, auditadas e monitoradas dentro do HB Intellicore."
     },
     "security": {
       "title": "Segurança e governança",
       "principles": [
-        "Rastreabilidade e versionamento ponta a ponta",
-        "Perfis de acesso e segregação por papel",
-        "Logging e auditoria contínua",
-        "Conformidade com requisitos corporativos e regulatórios"
+        "Rastreabilidade e auditoria ponta a ponta",
+        "Perfis de acesso alinhados à governança corporativa",
+        "Observabilidade em tempo real e alerta inteligente",
+        "Conformidade com requisitos regulatórios e internos"
       ]
     },
     "cta": {
-      "title": "Construa seu módulo de inteligência",
+      "title": "Vamos desenhar o próximo hub sob o HB Intellicore?",
       "cta": "Iniciar escopo",
       "href": "/contato"
     }
   },
   "agro": {
     "hero": {
-      "title": "HB Agro Intel — inteligência para o agronegócio",
-      "subtitle": "Digitalizamos e unificamos o processo regulatório agro, conectando dados, equipes e governo em uma rede de decisão transparente."
+      "title": "HB Agro Intel",
+      "subtitle": "Software de inteligência para o agronegócio, nascido dentro do HB Intellicore."
     },
-    "context": {
-      "title": "O desafio",
-      "paragraphs": [
-        "Dados fragmentados, legislações em constante mudança e dependência de especialistas-chave geram riscos e atrasos no ciclo de registro.",
-        "O HB Agro Intel nasce para dar visibilidade, padronizar fluxos e automatizar alertas ao longo do pipeline regulatório."
-      ]
-    },
-    "module": {
-      "title": "Módulo 1 — Registro de produtos e profissionais",
-      "subtitle": "Inteligência, automação e acompanhamento ponta a ponta.",
-      "features": [
-        {
-          "title": "Dossiês e submissões",
-          "description": "Organização de documentos, evidências e versões com trilha de auditoria."
-        },
-        {
-          "title": "Linha do tempo e prazos",
-          "description": "Visibilidade completa de solicitações, status e responsáveis."
-        },
-        {
-          "title": "Painéis de status e alertas",
-          "description": "Notificações configuráveis por cultura, órgão e etapa."
-        },
-        {
-          "title": "Bibliotecas de requisitos",
-          "description": "Checklists vivos por agência, produto e região."
-        },
-        {
-          "title": "Evidências e anexos",
-          "description": "Controle de versão integrado com armazenamento seguro."
-        }
+    "identity": {
+      "title": "Identidade HB Agro Intel",
+      "description": [
+        "Derivada da marca HB Advisory, reforçando o universo agro com tons verdes, bege, marrom e dourado.",
+        "Aplicamos a nova marca em toda a jornada: módulos web, materiais comerciais, documentação viva e áreas autenticadas do HB Intellicore."
       ],
-      "notes": {
-        "public": "Integrações-alvo: ANVISA, MAPA, IBAMA e licenças estaduais.",
-        "corporate": "Integração corporativa: ERPs, GED/ECM, identidade corporativa (SSO).",
-        "remark": "Fases e entregas priorizadas via SDP."
+      "palette": [
+        "Verde florestal (#0A2E1B)",
+        "Verde campo (#2F5A2B)",
+        "Bege fibra (#F5E9D4)",
+        "Dourado colheita (#B38F4A)"
+      ],
+      "tagline": "Paleta pensada para remeter a solo fértil, tecnologia de precisão e colheita.",
+      "note": "O guia completo de identidade (tipografia, raster e aplicações) está em preparação. Solicite acesso antecipado à equipe.",
+      "logoAlt": "Logotipo HB Agro Intel",
+      "download": {
+        "label": "Solicitar pacote de marca",
+        "href": "mailto:contato@hb-advisory.com.br?subject=Pacote%20de%20marca%20HB%20Agro%20Intel"
       }
     },
-    "personas": {
-      "title": "Para quem é",
+    "overview": {
+      "title": "O que entregamos desde o dia 1",
+      "description": "HB Agro Intel combina automação regulatória, inteligência operacional de campo e governança em um único hub.",
       "items": [
-        "Gerente Regulatório",
-        "Especialista de Registro",
-        "Jurídico de Produto",
-        "Assuntos Corporativos",
-        "Operações e Supply",
-        "Diretor Técnico"
+        "Pipelines homologados com MAPA, ANVISA, IBAMA e órgãos estaduais",
+        "Templates versionados por cultura, produto, classificação e estágio regulatório",
+        "Dashboards de status, alertas de prazo e trilhas de auditoria em tempo real",
+        "Camada de identidade e SSO integradas ao HB Intellicore"
       ]
     },
-    "metrics": {
-      "title": "Indicadores de valor",
+    "video": {
+      "title": "Walkthrough guiado do HB Agro Intel",
+      "description": "Estamos finalizando o walkthrough em vídeo com os principais fluxos. Enquanto isso, compartilhe seu e-mail corporativo para receber o protótipo navegável e participar das sessões guiadas.",
+      "cta": "Solicitar acesso ao protótipo",
+      "href": "mailto:contato@hb-advisory.com.br?subject=Walkthrough%20HB%20Agro%20Intel",
+      "note": "O vídeo completo será disponibilizado aos clientes fundadores e parceiros priorizados.",
+      "caption": "Protótipo navegável atualizado semanalmente"
+    },
+    "modules": {
+      "title": "Módulos do HB Agro Intel",
       "items": [
-        "Tempo de ciclo e lead time de registro",
-        "Taxa de retrabalho e devolutivas",
-        "Cumprimento de prazos críticos",
-        "Cobertura documental e versionamento",
-        "Evidências auditáveis e prontas para inspeções"
+        {
+          "label": "Módulo 1 – Regulatório",
+          "description": "Fluxo completo para registro de produtos e profissionais, com checklists dinâmicos, linha do tempo e históricos auditáveis.",
+          "features": [
+            "Biblioteca viva de requisitos por órgão, cultura e produto",
+            "Gestão de dossiês, evidências, anexos e versões controladas",
+            "Painéis de status, alertas de prazo e trilhas de auditoria",
+            "Integrações confirmadas com MAPA/Agrofit e ANVISA; IBAMA e licenças estaduais na esteira"
+          ]
+        },
+        {
+          "label": "Módulo 2 – Produtor & Agrônomo",
+          "description": "Suporte a equipes de campo com recomendações técnicas, compliance e monitoramento operacional.",
+          "features": [
+            "Matriz de recomendações agronômicas e alertas de risco",
+            "Integração com ERPs agroindustriais, CRM e dados climáticos",
+            "Painéis mobile-first para agrônomos, revendas e parceiros",
+            "Programa de pilotos com clientes fundadores a partir de 2026"
+          ]
+        }
       ]
     },
-    "roadmap": {
-      "title": "Evolução do hub",
-      "phases": [
+    "examples": {
+      "title": "Casos de uso já mapeados",
+      "items": [
         {
-          "label": "Fase 1",
-          "description": "Módulo 1 com dossiês, alertas e governança."
+          "title": "Registro e pós-registro",
+          "description": "Orquestração do ciclo completo de registro de produtos fitossanitários com histórico auditável e alertas proativos.",
+          "tag": "Regulatório"
         },
         {
-          "label": "Fase 2",
-          "description": "Integrações governamentais e corporativas prioritárias."
+          "title": "Gestão de agrônomos e produtores",
+          "description": "Portal com recomendações técnicas, alertas de risco e integrações com ERPs e CRMs de campo.",
+          "tag": "Produtor"
         },
         {
-          "label": "Fase 3",
-          "description": "Analytics avançado e modelos preditivos de risco."
+          "title": "Governança e compliance ESG",
+          "description": "Rastreabilidade de insumos, laudos e compromissos socioambientais conectados a indicadores de desempenho.",
+          "tag": "Sustentabilidade"
+        }
+      ]
+    },
+    "journey": {
+      "title": "Como funciona",
+      "steps": [
+        {
+          "title": "Coleta e normalização",
+          "description": "Pipelines para MAPA, ANVISA, IBAMA, AgroAPI, Bioinsumos, DOU e fontes privadas."
+        },
+        {
+          "title": "Orquestração",
+          "description": "Triggers e playbooks conectando times regulatórios, jurídicos, corporativos e agronômicos."
+        },
+        {
+          "title": "Decisão",
+          "description": "Dashboards, relatórios e copilotos para acelerar aprovações, mitigar riscos e priorizar ações de campo."
+        },
+        {
+          "title": "Aprendizado contínuo",
+          "description": "Feedback loops com clientes fundadores e evolução do roadmap compartilhado."
+        }
+      ]
+    },
+    "integrations": {
+      "title": "Integrações e fontes de dados",
+      "groups": [
+        {
+          "title": "Conectores regulatórios",
+          "items": [
+            "MAPA / Agrofit",
+            "ANVISA",
+            "IBAMA",
+            "Órgãos estaduais",
+            "Diário Oficial da União"
+          ]
+        },
+        {
+          "title": "Dados operacionais",
+          "items": [
+            "ERPs agroindustriais",
+            "CRMs e força de vendas",
+            "Dados climáticos (INMET e APIs privadas)",
+            "Telemetria de campo e IoT"
+          ]
+        },
+        {
+          "title": "Experiência & identidade",
+          "items": [
+            "SSO corporativo",
+            "HB Intellicore Identity",
+            "Alertas e notificações via Mailgun",
+            "Documentação viva (Confluence/Notion)"
+          ]
         }
       ],
-      "note": "Cronograma detalhado será consolidado no SDP."
+      "note": "Cada integração herda monitoramento, logs e versionamento do HB Intellicore."
+    },
+    "roadmap": {
+      "title": "Próximas entregas",
+      "phases": [
+        {
+          "label": "Q4 2025",
+          "description": "Pilotos regulatórios com dossiês completos e integrações MAPA / ANVISA.",
+          "status": "Em andamento"
+        },
+        {
+          "label": "Q1 2026",
+          "description": "Módulo Produtor & Agrônomo com aplicativo mobile e alertas climáticos.",
+          "status": "Em design"
+        },
+        {
+          "label": "Q2 2026",
+          "description": "Camada ESG e sustentabilidade com indicadores e painéis executivos.",
+          "status": "Planejado"
+        }
+      ]
     },
     "cta": {
-      "title": "Acelere seu pipeline regulatório com inteligência",
+      "title": "Quer se tornar cliente fundador do HB Agro Intel?",
       "cta": "Solicitar demonstração",
       "href": "/contato"
+    },
+    "login": {
+      "title": "Acessar o HB Agro Intel",
+      "subtitle": "Usuários corporativos entram com as credenciais do HB Intellicore Identity. Ainda não tem acesso? Solicite convites à equipe.",
+      "cta": "Entrar no HB Agro Intel",
+      "support": "Precisa de ajuda? Escreva para suporte@hb-advisory.com.br",
+      "home": "Voltar ao HB Agro Intel"
     }
   },
   "projects": {
@@ -315,17 +375,22 @@
     },
     "highlights": {
       "title": "Estudos, publicações e casos",
-      "empty": "Estamos preparando a biblioteca inicial. Cadastre-se para ser avisado das novidades."
+      "empty": "Estamos preparando a primeira leva de materiais. Cadastre-se para ser avisado."
     },
     "library": {
       "title": "Conteúdo técnico",
-      "filters": ["Tipo", "Setor", "Tema", "Data"],
+      "filters": [
+        "Tipo",
+        "Setor",
+        "Tema",
+        "Data"
+      ],
       "cta": "Assinar alertas"
     }
   },
   "contact": {
     "title": "Fale com a HB Advisory",
-    "description": "Conte como podemos ajudar. Em até 24 horas úteis retornamos com próximos passos, agendas disponíveis ou acesso ao HB Intellicore e ao HB Agro Intel.",
+    "description": "Conte como podemos ajudar. Em até 24 horas úteis retornamos com próximos passos, agendas disponíveis ou acesso aos hubs do HB Intellicore.",
     "form": {
       "name": "Nome",
       "email": "Email corporativo",
@@ -354,11 +419,11 @@
   },
   "footer": {
     "newsletterTitle": "Assine a newsletter",
-    "newsletterDescription": "Receba insights regulatórios e agenda de novidades.",
+    "newsletterDescription": "Receba insights regulatórios, agenda do agronegócio e novidades dos hubs.",
     "emailPlaceholder": "seuemail@empresa.com",
     "newsletterCta": "Quero receber",
     "privacy": "Respeitamos sua privacidade. Você pode cancelar a inscrição quando quiser.",
-    "summary": "Conectamos inteligência, ciência e estratégia para impulsionar inovação e conformidade.",
+    "summary": "HB Intellicore conecta inteligência, ciência e estratégia para impulsionar inovação, compliance e crescimento sustentável.",
     "copyright": "Todos os direitos reservados.",
     "menu": {
       "about": "Sobre",
@@ -372,7 +437,7 @@
   "minhaHb": {
     "title": "Minha HB",
     "subtitle": "Área do cliente em construção.",
-    "description": "Estamos preparando acesso autenticado a dashboards, módulos e materiais exclusivos.",
+    "description": "Estamos preparando acesso autenticado a dashboards, módulos e materiais exclusivos sob o HB Intellicore.",
     "cta": "Quero ser avisado"
   }
 }

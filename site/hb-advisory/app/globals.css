@@ -7,9 +7,14 @@
 }
 
 body {
-  @apply bg-white text-brand-charcoal antialiased;
+  @apply bg-brand-navyDark text-brand-sand antialiased;
+  background-image:
+    radial-gradient(circle at top left, rgba(52, 101, 164, 0.25), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(242, 155, 56, 0.15), transparent 55%),
+    linear-gradient(135deg, #040910 0%, #0c1a3a 40%, #02050a 100%);
+  background-attachment: fixed;
 }
 
 a {
-  @apply text-brand-slate hover:text-brand-navy transition-colors;
+  @apply text-brand-sky hover:text-white transition-colors;
 }

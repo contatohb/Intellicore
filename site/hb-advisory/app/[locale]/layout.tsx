@@ -9,33 +9,33 @@ import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'HB Advisory | Inteligência Regulatória e Agro Inteligente',
-    template: '%s | HB Advisory'
+    default: 'HB Intellicore | Guarda-chuva de hubs HB Advisory',
+    template: '%s | HB Intellicore'
   },
   description:
-    'HB Advisory conecta dados regulatórios, inteligência agro e automações de IA para acelerar decisões e compliance.',
+    'HB Intellicore conecta dados regulatórios, inteligência agro e automações de IA para acelerar decisões e compliance sob o guarda-chuva HB Advisory.',
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    title: 'HB Advisory',
+    title: 'HB Intellicore',
     description:
-      'Soluções de inteligência regulatória e agro para equipes que precisam de dados confiáveis e automação.',
+      'Guarda-chuva HB Intellicore: hubs de inteligência regulatória, agro e inovação com dados confiáveis e automação.',
     url: 'https://hb-advisory.com.br',
-    siteName: 'HB Advisory',
+    siteName: 'HB Intellicore',
     images: [
       {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'HB Advisory'
+        alt: 'HB Intellicore'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HB Advisory',
+    title: 'HB Intellicore',
     description:
-      'Soluções de inteligência regulatória e agro para equipes que precisam de dados confiáveis e automação.'
+      'Guarda-chuva HB Intellicore: hubs de inteligência regulatória, agro e inovação com dados confiáveis e automação.'
   }
 };
 

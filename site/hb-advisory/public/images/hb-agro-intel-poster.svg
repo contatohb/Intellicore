@@ -1,0 +1,28 @@
+<svg width="960" height="540" viewBox="0 0 960 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="posterGradient" x1="0" y1="0" x2="960" y2="540" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A2E1B"/>
+      <stop offset="0.6" stop-color="#2F5A2B"/>
+      <stop offset="1" stop-color="#B38F4A"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 0H40V40" fill="none" stroke="rgba(245,233,212,0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="540" fill="url(#posterGradient)"/>
+  <rect width="960" height="540" fill="url(#grid)"/>
+  <path d="M0 390C180 330 320 360 480 420C640 480 780 450 960 390V540H0V390Z" fill="rgba(245,233,212,0.12)"/>
+  <g opacity="0.65">
+    <circle cx="780" cy="140" r="70" stroke="rgba(245,233,212,0.55)" stroke-width="8"/>
+    <circle cx="780" cy="140" r="40" stroke="rgba(245,233,212,0.35)" stroke-width="4"/>
+    <line x1="720" y1="140" x2="840" y2="140" stroke="rgba(245,233,212,0.35)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="780" y1="80" x2="780" y2="200" stroke="rgba(245,233,212,0.35)" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="80" y="156" font-family="Helvetica, Arial, sans-serif" font-weight="600" font-size="20" letter-spacing="6" fill="rgba(245,233,212,0.7)">HB AGRO INTEL</text>
+  <text x="80" y="224" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="54" fill="#F5E9D4">Walkthrough</text>
+  <text x="80" y="286" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="54" fill="#F5E9D4">Regulatory Module</text>
+  <rect x="80" y="332" width="320" height="56" rx="28" fill="rgba(245,233,212,0.18)" stroke="rgba(245,233,212,0.55)" stroke-width="2"/>
+  <text x="95" y="368" font-family="Helvetica, Arial, sans-serif" font-weight="600" font-size="18" fill="#F5E9D4">Interactive prototype updated weekly</text>
+  <rect x="440" y="332" width="180" height="56" rx="28" fill="#F5E9D4"/>
+  <text x="460" y="368" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="18" fill="#0A2E1B">View preview</text>
+</svg>

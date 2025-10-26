@@ -24,20 +24,20 @@ export const Header = () => {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-sand bg-white/90 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/75">
-      <div className="pointer-events-none absolute inset-0 opacity-70 mix-blend-multiply bg-[radial-gradient(circle_at_top_left,rgba(19,59,115,0.25),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(242,155,56,0.25),transparent_55%),linear-gradient(135deg,rgba(9,20,43,0.9),rgba(12,34,80,0.85))]" />
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-navy/95 shadow-md backdrop-blur supports-[backdrop-filter]:bg-brand-navy/85">
+      <div className="pointer-events-none absolute inset-0 opacity-80 bg-[radial-gradient(circle_at_top_left,rgba(76,117,181,0.25),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(242,155,56,0.18),transparent_60%),linear-gradient(135deg,rgba(4,9,16,0.95),rgba(12,34,80,0.9))]" />
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-white md:px-6">
         <Link href={withLocale(locale, '')} className="flex items-center gap-3 md:gap-4">
           <Image
             src="/hb-advisory-logo.png"
-            alt="HB Advisory logo"
+            alt="HB Intellicore mark"
             width={64}
             height={64}
             className="h-14 w-auto md:h-16"
             priority
           />
           <div className="flex flex-col leading-tight text-xs font-medium text-white md:text-sm">
-            <span className="text-base font-semibold tracking-wide md:text-lg">HB Advisory</span>
+            <span className="text-base font-semibold tracking-wide md:text-lg">HB Intellicore</span>
             <span className="uppercase tracking-[0.32em] text-[0.65rem] text-white/80 md:text-[0.75rem]">
               {t('tagline')}
             </span>
@@ -51,7 +51,7 @@ export const Header = () => {
           ))}
           <Link
             href={withLocale(locale, '/contato')}
-            className="rounded-full bg-white/20 px-5 py-2 text-white shadow hover:bg-white/30"
+            className="rounded-full border border-white/30 bg-white/10 px-5 py-2 text-white shadow hover:bg-white/20"
           >
             {t('cta')}
           </Link>
@@ -68,7 +68,7 @@ export const Header = () => {
         </button>
       </div>
       <div className={clsx('md:hidden transition-all duration-200', open ? 'max-h-screen' : 'max-h-0 overflow-hidden')}>
-        <div className="space-y-4 border-t border-white/30 bg-brand-navy/95 px-4 pb-6 pt-4 text-sm font-medium text-brand-sand">
+        <div className="space-y-4 border-t border-white/10 bg-brand-navyDark/95 px-4 pb-6 pt-4 text-sm font-medium text-brand-sand">
           {mainNav.map((item) => (
             <Link
               key={item.key}
