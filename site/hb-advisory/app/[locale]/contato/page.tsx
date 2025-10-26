@@ -11,7 +11,8 @@ type ContactChannel = {
 export default async function ContactPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'contact' });
-  const channels = (t('channels', { returnObjects: true }) as unknown as ContactChannel[]) ?? [];
+  const rawChannels = t('channels', { returnObjects: true }) as unknown;
+  const channels = Array.isArray(rawChannels) ? (rawChannels as ContactChannel[]) : [];
 
   return (
     <div className="mx-auto grid max-w-5xl gap-12 px-4 py-16 md:grid-cols-[2fr,3fr]">
