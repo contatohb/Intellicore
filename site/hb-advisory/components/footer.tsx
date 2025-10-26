@@ -32,9 +32,9 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <p className="mb-3 font-semibold text-brand-navy">Hubs</p>
+            <p className="mb-3 font-semibold text-brand-navy">Soluções</p>
             <ul className="space-y-2">
-              {navigation.hubs.map((item) => (
+              {navigation.solutions.map((item) => (
                 <li key={item.key}>
                   <Link href={withLocale(locale, item.path)} className="text-brand-charcoal/70 hover:text-brand-navy">
                     {tMenu(item.key as any)}

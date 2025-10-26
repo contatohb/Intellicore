@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { LayeredSection } from '@/components/layered-section';
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade',
@@ -37,26 +38,30 @@ const sections = [
 
 export default function PrivacyPage() {
   return (
-    <div className="mx-auto max-w-4xl space-y-10 px-4 py-16">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-semibold text-brand-navy">Política de Privacidade</h1>
-        <p className="text-sm text-brand-charcoal/70">Última atualização: 26 de outubro de 2025</p>
-      </header>
-      <div className="space-y-8">
+    <div className="mx-auto max-w-4xl space-y-8 px-4 py-16">
+      <LayeredSection variant="sand">
+        <div className="space-y-3">
+          <h1 className="text-3xl font-semibold text-brand-navy">Política de Privacidade</h1>
+          <p className="text-sm text-brand-charcoal/70">Última atualização: 26 de outubro de 2025</p>
+        </div>
+      </LayeredSection>
+      <div className="space-y-6">
         {sections.map((section) => (
-          <section key={section.title} className="space-y-3">
-            <h2 className="text-xl font-semibold text-brand-navy">{section.title}</h2>
-            {section.body.map((paragraph) => (
-              <p key={paragraph} className="text-sm text-brand-charcoal/80 leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
-          </section>
+          <LayeredSection key={section.title} variant="brand">
+            <div className="space-y-3 text-sm leading-relaxed text-brand-charcoal/85">
+              <h2 className="text-xl font-semibold text-brand-navy">{section.title}</h2>
+              {section.body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </LayeredSection>
         ))}
       </div>
-      <p className="rounded-2xl border border-brand-sand bg-brand-sand/40 p-4 text-xs text-brand-charcoal/70">
-        Dúvidas? Entre em contato com nosso time de privacidade pelo email privacy@hb-advisory.com.br.
-      </p>
+      <LayeredSection variant="slate">
+        <p className="text-xs text-brand-charcoal/70">
+          Dúvidas? Entre em contato com nosso time de privacidade pelo email privacy@hb-advisory.com.br.
+        </p>
+      </LayeredSection>
     </div>
   );
 }

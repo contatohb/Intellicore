@@ -1,151 +1,342 @@
 {
   "header": {
-    "tagline": "Intelligence | Technology | Training",
-    "cta": "Contact our team",
+    "tagline": "Intelligence | Science | Strategy",
+    "cta": "Talk to our team",
     "menu": {
       "home": "Home",
       "about": "About",
-      "hubs": "Hubs",
-      "events": "Calendar",
-      "courses": "Courses",
+      "intellicore": "HB Intellicore",
+      "agroIntel": "HB Agro Intel",
+      "projects": "Projects & Insights",
       "contact": "Contact"
     }
   },
   "home": {
-    "badge": "Intelligence + Agro + AI",
-    "title": "Regulatory and agro data with depth and real-time delivery.",
-    "description": "HB Advisory connects reliable pipelines, digital hubs and AI-powered experiences so your team keeps compliance, competitive intelligence and continuous innovation.",
-    "primaryCta": "Book a demo",
-    "secondaryCta": "Explore HB Agro Intel",
-    "proofPoints": [
-      "Integrations with Supabase, Render, Hotmart and Mailgun",
-      "Reports and APIs ready for SEO, marketing and growth",
-      "Public roadmap plus updated SRS/DDS documentation",
-      "Architecture prepared for hundreds of simultaneous users"
-    ],
-    "highlights": [
-      {
-        "title": "RegIntel 2.0",
-        "description": "Robust ingestion of DOU, Querido Diário, AgroAPI and open data with deduplication and audit trail.",
-        "href": "/sobre"
-      },
-      {
-        "title": "HB Agro Intel",
-        "description": "Searchable hub with regulations, manuals and competitor moves for fast decision-making.",
-        "href": "/hubs/agro-intel"
-      },
-      {
-        "title": "AI Copilots",
-        "description": "Automate analysis, summaries and alerts with models tailored to your operation.",
-        "href": "/hubs/ia"
-      }
-    ],
-    "marketing": {
-      "title": "High-performance digital marketing & SEO",
-      "description": "Landing pages, lead automation, structured content, tracking and CRM integrations out of the box.",
-      "points": [
-        "Template optimized for Core Web Vitals (Next.js 14, App Router, Tailwind).",
-        "Modular components to build landing pages in minutes.",
-        "Structured data (schema.org) and automatic sitemap.",
-        "Webhooks synced with Supabase and Mailgun for nurturing."
-      ],
-      "contactIntro": "Reach out to unlock HB Agro Intel or craft digital experiences connected to your stack.",
-      "cta": "Talk to a specialist"
+    "hero": {
+      "badge": "Connecting data, science and strategy",
+      "title": "Intelligence applied to innovation and compliance.",
+      "subtitle": "HB Advisory merges data, science and technology to turn regulatory and technical complexity into strategic intelligence and decision-making.",
+      "primaryCta": "Explore the ecosystem",
+      "primaryHref": "/intellicore",
+      "secondaryCta": "Talk to us",
+      "secondaryHref": "/contato"
     },
-    "status": {
-      "title": "Backfill status",
-      "description": "Pipelines run 24/7. Get hourly email updates or follow the upcoming dashboards.",
+    "value": {
+      "title": "What HB Advisory delivers",
       "items": [
-        "DOU 1990+ — continuous processing via INLabs/Ro-dou",
-        "Querido Diário — new municipalities and 2015+ history",
-        "AgroAPI — credentials configured, first ingestion in progress",
-        "Bioinsumos — adjusting endpoint for classes and categories"
+        {
+          "title": "Technical & market intelligence",
+          "description": "Continuous monitoring of regulatory, technological and production trends to guide innovation portfolios."
+        },
+        {
+          "title": "Automation & data",
+          "description": "Platforms, dashboards and pipelines ready to combine public, corporate and scientific sources."
+        },
+        {
+          "title": "Connection with official systems",
+          "description": "Integration with regulators, corporate frameworks and internal flows for confident decisions."
+        }
+      ]
+    },
+    "intellicore": {
+      "title": "HB Intellicore",
+      "description": "The nucleus that turns technical, legal and operational data into intelligent, collaborative systems.",
+      "cta": "Learn about the ecosystem",
+      "href": "/intellicore"
+    },
+    "agro": {
+      "title": "HB Agro Intel",
+      "description": "The first live hub of HB Intellicore. Digitalizes the registration workflow for products, professionals and decisions in agribusiness.",
+      "points": [
+        "Consolidation of dossiers and technical submissions",
+        "Status dashboards and regulatory alerts",
+        "Integration with MAPA, ANVISA, IBAMA and corporate ERPs"
       ],
-      "note": "Send feedback to hb-agro-intel@hb-advisory.com.br and join the public roadmap."
-    }
-  },
-  "footer": {
-    "newsletterTitle": "Subscribe to our newsletter",
-    "newsletterDescription": "Receive regulatory insights and the sector calendar.",
-    "emailPlaceholder": "you@company.com",
-    "newsletterCta": "Subscribe",
-    "privacy": "We respect your privacy. Unsubscribe at any time.",
-    "summary": "Regulatory, agro and AI automations so teams can turn data into reliable actions.",
-    "copyright": "All rights reserved.",
-    "menu": {
-      "about": "About",
-      "careers": "Careers",
-      "privacy": "Privacy policy",
-      "agro": "HB Agro Intel",
-      "events": "Sector calendar",
-      "courses": "Courses & Certifications",
-      "ai": "AI & Copilots"
+      "cta": "Explore HB Agro Intel",
+      "href": "/agro-intel"
+    },
+    "how": {
+      "title": "From complexity to actionable insight",
+      "steps": [
+        {
+          "title": "Collection & normalization",
+          "description": "Pipelines capture, clean and structure public, private and scientific data."
+        },
+        {
+          "title": "Connection with regulations",
+          "description": "Rules and requirements stay up to date with full traceability."
+        },
+        {
+          "title": "Dashboards & alerts",
+          "description": "KPIs and proactive notifications reduce rework and blind spots."
+        },
+        {
+          "title": "Corporate integration",
+          "description": "APIs and connectors deliver intelligence to ERPs, BI and internal workflows."
+        }
+      ]
+    },
+    "integrations": {
+      "title": "Integration potential",
+      "items": ["ANVISA", "MAPA", "IBAMA", "State agencies", "Corporate ERPs"],
+      "note": "Integrations go live according to each client SDP."
+    },
+    "authority": {
+      "title": "Technical leadership",
+      "quote": "Intelligence is the link that connects science, legislation and technology — turning information into direction and innovation into impact.",
+      "cta": "Meet the founder",
+      "href": "/about"
+    },
+    "cta": {
+      "title": "Let’s design your sector intelligence",
+      "subtitle": "Count on a scalable ecosystem to accelerate innovation, compliance and competitiveness.",
+      "cta": "Book a call",
+      "href": "/contato"
     }
   },
   "about": {
-    "title": "Why we exist",
-    "section1": "HB Advisory was founded by specialists in regulation, data and technology to turn public and private data into actionable decisions with safety and speed. We focus on industries that rely on compliance and competitive intelligence, starting with agro.",
-    "section2": "We operate with documented pipelines, monitoring and infrastructure that supports growth without friction. Collaboration with client teams is key and we provide the materials needed so external partners can also contribute.",
+    "manifest": {
+      "title": "Intelligence, legislation and technology connected",
+      "paragraphs": [
+        "HB Advisory is a strategy and intelligence platform created by Hudson Viana Borges, an executive with over 20 years across environmental sciences, agrochemicals, biotechnology and applied research.",
+        "We transform public and private data into actionable direction, with auditable pipelines, living documentation and close collaboration with client teams."
+      ]
+    },
+    "founder": {
+      "title": "Hudson Viana Borges",
+      "highlights": [
+        "Veterinarian from University of Brasília with a Crop Protection specialization (UniFeob)",
+        "International programs in Advanced Toxicology (University of Guelph) and Regulatory Science (SCAHT)",
+        "Leadership roles at Syngenta, Bayer, Envu and Bioagri (Mérieux NutriSciences) across Latin America",
+        "Multicultural experience in Switzerland, Germany, USA, Canada, France, the UK and LATAM"
+      ],
+      "quote": "HB Advisory embodies the maturity of a vision: intelligence as the bridge connecting science, legislation and technology — transforming information into direction and innovation into impact.",
+      "cta": "Talk to Hudson"
+    },
+    "mission": "Integrate technical knowledge, data and technology to generate applied intelligence — connecting science, legislation and strategy to accelerate innovation.",
+    "vision": "Become the Latin American reference in integrated intelligence, linking public, private and scientific systems to reshape innovation and compliance.",
     "values": [
       {
-        "title": "Data reliability",
-        "description": "Auditable pipelines, versioning and end-to-end traceability."
+        "title": "Technical excellence",
+        "description": "Scientific and methodological rigor as a standard." 
       },
       {
-        "title": "Purposeful speed",
-        "description": "Automation with AI where it truly impacts—always with human oversight."
+        "title": "Integration",
+        "description": "Data, people and institutions connected as a network."
       },
       {
-        "title": "Transparency & partnership",
-        "description": "Open documentation, public roadmap and co-creation with our clients."
+        "title": "Continuous innovation",
+        "description": "Constant evolution of intelligence models."
+      },
+      {
+        "title": "Transparency & ethics",
+        "description": "A solid foundation of credibility and purpose."
+      },
+      {
+        "title": "Diversity & humanity",
+        "description": "Inclusion as culture and method."
       }
     ],
-    "pillars": [
-      {
-        "title": "RegIntel 2.0",
-        "items": [
-          "Historical reprocessing of DOU, Querido Diário and open data",
-          "Integrations with Supabase, Render, Postgres and BI",
-          "Email alerts and APIs for digital squads"
-        ]
-      },
-      {
-        "title": "HB Agro Intel",
-        "items": [
-          "Collection of manuals, guides, competitors and events",
-          "Regulatory calendar and competitor monitoring",
-          "Dashboards for commercial and R&D teams"
-        ]
-      },
-      {
-        "title": "AI Experiences",
-        "items": [
-          "Copilots for regulatory summaries",
-          "Automatic risk classification",
-          "APIs for chatbots and internal automations"
-        ]
+    "method": {
+      "title": "From data to impact",
+      "steps": [
+        {
+          "title": "Discovery",
+          "description": "Immersion into regulatory, technical and strategic challenges."
+        },
+        {
+          "title": "Modeling",
+          "description": "Structuring data, workflows and key indicators."
+        },
+        {
+          "title": "Integration",
+          "description": "Connecting corporate systems, public agencies and partners."
+        },
+        {
+          "title": "Operation",
+          "description": "Governance, monitoring and continuous evolution with the teams."
+        }
+      ]
+    },
+    "careers": {
+      "title": "Careers & collaboration",
+      "body": "We are assembling a network of experts in regulation, data engineering, UX and growth. Interested in contributing to HB Intellicore or HB Agro Intel? Share your portfolio or product idea at talentos@hb-advisory.com.br.",
+      "cta": "I want to collaborate"
+    },
+    "downloadCta": "Download founder CV"
+  },
+  "intellicore": {
+    "hero": {
+      "title": "HB Intellicore",
+      "subtitle": "A platform that blends data, automation and knowledge to transform regulatory and technical operations into intelligent ecosystems."
+    },
+    "core": {
+      "title": "Data & automation platform",
+      "description": "Integrates technical, legal and operational data; generates insights, orchestrates flows and enables specialized modules."
+    },
+    "architecture": {
+      "title": "Ecosystem layers",
+      "layers": [
+        {
+          "title": "Data layer",
+          "description": "Collection, normalization and versioning of public and private sources."
+        },
+        {
+          "title": "Rules layer",
+          "description": "Legislation, requirements and corporate policies with full traceability."
+        },
+        {
+          "title": "Analytics & AI layer",
+          "description": "Predictive models, dashboards and copilots focused on decision-making."
+        },
+        {
+          "title": "Applications layer",
+          "description": "Modules, hubs and APIs adaptable by sector or process."
+        }
+      ]
+    },
+    "connections": {
+      "title": "Connections & integrations",
+      "items": [
+        "Government registration and inspection systems",
+        "Corporate platforms (ERP, BI, DMS, CRM)",
+        "Scientific and open-innovation datasets",
+        "Strategic partners and sector associations"
+      ],
+      "note": "Activation follows each client SDP and governance."
+    },
+    "security": {
+      "title": "Security & governance",
+      "principles": [
+        "End-to-end traceability and version control",
+        "Role-based access and segregation",
+        "Continuous logging and audit trail",
+        "Compliance with corporate and regulatory requirements"
+      ]
+    },
+    "cta": {
+      "title": "Build your intelligence module",
+      "cta": "Start scoping",
+      "href": "/contato"
+    }
+  },
+  "agro": {
+    "hero": {
+      "title": "HB Agro Intel — intelligence for agribusiness",
+      "subtitle": "We digitalize and unify the agro regulatory process, connecting data, teams and government in a transparent decision network."
+    },
+    "context": {
+      "title": "The challenge",
+      "paragraphs": [
+        "Fragmented data, ever-changing regulations and reliance on key experts increase risk and delays in product registration.",
+        "HB Agro Intel was designed to bring visibility, standardize flows and automate alerts throughout the regulatory pipeline."
+      ]
+    },
+    "module": {
+      "title": "Module 1 — Product & regulatory professionals",
+      "subtitle": "Intelligence, automation and end-to-end tracking.",
+      "features": [
+        {
+          "title": "Dossiers & submissions",
+          "description": "Organize documents, evidence and versions with an audit trail."
+        },
+        {
+          "title": "Timeline & deadlines",
+          "description": "Full visibility of requests, statuses and accountable teams."
+        },
+        {
+          "title": "Status dashboards & alerts",
+          "description": "Configurable notifications by crop, agency and stage."
+        },
+        {
+          "title": "Requirements library",
+          "description": "Living checklists by agency, product and region."
+        },
+        {
+          "title": "Evidence & attachments",
+          "description": "Version control integrated with secure storage."
+        }
+      ],
+      "notes": {
+        "public": "Target integrations: ANVISA, MAPA, IBAMA and state licenses.",
+        "corporate": "Corporate integration: ERPs, DMS/ECM, corporate identity (SSO).",
+        "remark": "Phasing and deliverables prioritized via SDP."
       }
-    ],
-    "careersTitle": "Building the right team",
-    "careersDescription": "We are assembling a network of experts in regulation, data engineering, UX and growth. Interested in contributing? Email your portfolio or product idea to <email>talentos@hb-advisory.com.br</email>.",
-    "careersCta": "I want to collaborate",
-    "downloadCta": "Download founder CV",
-    "pillarsTitle": "Operating pillars"
+    },
+    "personas": {
+      "title": "Designed for",
+      "items": [
+        "Regulatory Manager",
+        "Registration Specialist",
+        "Product Legal",
+        "Corporate Affairs",
+        "Operations & Supply",
+        "Technical Director"
+      ]
+    },
+    "metrics": {
+      "title": "Value indicators",
+      "items": [
+        "Cycle time and registration lead time",
+        "Rework and resubmission rate",
+        "Compliance with critical deadlines",
+        "Document coverage and version control",
+        "Auditable evidence ready for inspections"
+      ]
+    },
+    "roadmap": {
+      "title": "Hub evolution",
+      "phases": [
+        {
+          "label": "Phase 1",
+          "description": "Module 1 with dossiers, alerts and governance."
+        },
+        {
+          "label": "Phase 2",
+          "description": "Priority public and corporate integrations."
+        },
+        {
+          "label": "Phase 3",
+          "description": "Advanced analytics and predictive risk models."
+        }
+      ],
+      "note": "Detailed schedule will be aligned in the SDP."
+    },
+    "cta": {
+      "title": "Accelerate your regulatory pipeline with intelligence",
+      "cta": "Request a demo",
+      "href": "/contato"
+    }
+  },
+  "projects": {
+    "hero": {
+      "title": "Projects & Insights",
+      "subtitle": "Cases, studies and publications connecting applied intelligence to strategy."
+    },
+    "highlights": {
+      "title": "Featured studies and cases",
+      "empty": "We are preparing the first library update. Subscribe to be notified."
+    },
+    "library": {
+      "title": "Technical content",
+      "filters": ["Type", "Sector", "Topic", "Date"],
+      "cta": "Subscribe to alerts"
+    }
   },
   "contact": {
-    "title": "Let's talk?",
-    "description": "Tell us how we can help. Within 24 business hours we reply with next steps, calendar options or HB Agro Intel access.",
+    "title": "Talk to HB Advisory",
+    "description": "Tell us how we can help. Within 24 business hours we reply with next steps, meeting slots or access to HB Intellicore and HB Agro Intel.",
     "form": {
       "name": "Name",
       "email": "Corporate email",
       "company": "Company",
       "message": "Message",
       "submit": "Send message",
-      "privacy": "We use your data only to reply to your request. Review our <privacy>privacy policy</privacy>."
+      "privacy": "We only use the provided data to reply to your request. Check our <privacy>privacy policy</privacy>."
     },
     "channels": [
       {
-        "title": "Sales",
+        "title": "Commercial",
         "email": "contato@hb-advisory.com.br",
         "details": "Presentations, proposals and integrations with your digital stack."
       },
@@ -160,5 +351,28 @@
         "details": "Billing, contracts, terms and administrative support."
       }
     ]
+  },
+  "footer": {
+    "newsletterTitle": "Subscribe to our newsletter",
+    "newsletterDescription": "Receive regulatory insights and news.",
+    "emailPlaceholder": "you@company.com",
+    "newsletterCta": "Subscribe",
+    "privacy": "We respect your privacy. Unsubscribe at any time.",
+    "summary": "We connect intelligence, science and strategy to drive innovation and compliance.",
+    "copyright": "All rights reserved.",
+    "menu": {
+      "about": "About",
+      "intellicore": "HB Intellicore",
+      "agroIntel": "HB Agro Intel",
+      "projects": "Projects & Insights",
+      "careers": "Careers",
+      "privacy": "Privacy policy"
+    }
+  },
+  "minhaHb": {
+    "title": "Minha HB",
+    "subtitle": "Client area under construction.",
+    "description": "We are preparing authenticated access to dashboards, modules and exclusive materials.",
+    "cta": "Notify me"
   }
 }

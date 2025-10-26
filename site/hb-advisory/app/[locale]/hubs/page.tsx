@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { withLocale } from '@/lib/paths';
+import { LayeredSection } from '@/components/layered-section';
 
 const hubs = [
   {
@@ -28,24 +29,28 @@ export default function HubsIndex({ params }: { params: { locale: string } }) {
   const { locale } = params;
   return (
     <div className="mx-auto max-w-5xl space-y-10 px-4 py-16">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-semibold text-brand-navy">Hubs HB Advisory</h1>
-        <p className="text-brand-charcoal/75">
-          Experiências especializadas para diferentes momentos da jornada regulatória e de negócios.
-        </p>
-      </header>
-      <div className="grid gap-6 md:grid-cols-2">
-        {hubs.map((hub) => (
-          <Link
-            key={hub.title}
-            href={withLocale(locale, hub.path)}
-            className="rounded-3xl border border-brand-sand bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-          >
-            <h2 className="text-xl font-semibold text-brand-navy">{hub.title}</h2>
-            <p className="mt-2 text-sm text-brand-charcoal/80">{hub.description}</p>
-          </Link>
-        ))}
-      </div>
+      <LayeredSection variant="sand">
+        <div className="space-y-3">
+          <h1 className="text-3xl font-semibold text-brand-navy">Hubs HB Advisory</h1>
+          <p className="text-brand-charcoal/75">
+            Experiências especializadas para diferentes momentos da jornada regulatória e de negócios.
+          </p>
+        </div>
+      </LayeredSection>
+      <LayeredSection variant="brand" noSurface>
+        <div className="grid gap-6 md:grid-cols-2">
+          {hubs.map((hub) => (
+            <Link
+              key={hub.title}
+              href={withLocale(locale, hub.path)}
+              className="rounded-3xl border border-brand-sand bg-white/85 p-6 shadow transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <h2 className="text-xl font-semibold text-brand-navy">{hub.title}</h2>
+              <p className="mt-2 text-sm text-brand-charcoal/80">{hub.description}</p>
+            </Link>
+          ))}
+        </div>
+      </LayeredSection>
     </div>
   );
 }

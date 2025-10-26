@@ -27,11 +27,20 @@ export const Header = () => {
     <header className="sticky top-0 z-50 border-b border-brand-sand bg-white/90 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/75">
       <div className="pointer-events-none absolute inset-0 opacity-70 mix-blend-multiply bg-[radial-gradient(circle_at_top_left,rgba(19,59,115,0.25),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(242,155,56,0.25),transparent_55%),linear-gradient(135deg,rgba(9,20,43,0.9),rgba(12,34,80,0.85))]" />
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-white md:px-6">
-        <Link href={withLocale(locale, '')} className="flex items-center gap-3">
-          <Image src="/hb-advisory-logo.png" alt="HB Advisory logo" width={44} height={44} className="h-11 w-auto" priority />
-          <div className="flex flex-col leading-tight text-xs md:text-sm">
-            <span className="font-semibold tracking-wide">HB Advisory</span>
-            <span className="uppercase tracking-[0.28em] text-[0.65rem] md:text-[0.7rem]">{t('tagline')}</span>
+        <Link href={withLocale(locale, '')} className="flex items-center gap-3 md:gap-4">
+          <Image
+            src="/hb-advisory-logo.png"
+            alt="HB Advisory logo"
+            width={64}
+            height={64}
+            className="h-14 w-auto md:h-16"
+            priority
+          />
+          <div className="flex flex-col leading-tight text-xs font-medium text-white md:text-sm">
+            <span className="text-base font-semibold tracking-wide md:text-lg">HB Advisory</span>
+            <span className="uppercase tracking-[0.32em] text-[0.65rem] text-white/80 md:text-[0.75rem]">
+              {t('tagline')}
+            </span>
           </div>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
