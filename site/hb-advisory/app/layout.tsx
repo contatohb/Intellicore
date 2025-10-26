@@ -1,3 +1,5 @@
+import './globals.css';
+
 import type { ReactNode } from 'react';
 import { defaultLocale } from '@/i18n/config';
 

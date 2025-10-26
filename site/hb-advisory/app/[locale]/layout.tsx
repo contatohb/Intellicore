@@ -4,7 +4,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { ReactNode } from 'react';
 import { getMessages } from '@/i18n/get-messages';
 import { Locale, locales } from '@/i18n/config';
-import '@/app/globals.css';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 
