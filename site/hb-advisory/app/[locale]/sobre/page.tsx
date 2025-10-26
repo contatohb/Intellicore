@@ -13,8 +13,28 @@ export default async function AboutPage({ params }: { params: { locale: string }
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'about' });
 
-  const values = t<any>('values', { returnObjects: true }) as { title: string; description: string }[];
-  const pillars = t<any>('pillars', { returnObjects: true }) as { title: string; items: string[] }[];
+  const valuesRaw = t.raw('values') as unknown;
+  const values = Array.isArray(valuesRaw)
+    ? valuesRaw.map((entry) => {
+        const candidate = entry as Record<string, unknown>;
+        return {
+          title: String(candidate?.title ?? ''),
+          description: String(candidate?.description ?? '')
+        };
+      })
+    : [];
+
+  const pillarsRaw = t.raw('pillars') as unknown;
+  const pillars = Array.isArray(pillarsRaw)
+    ? pillarsRaw.map((entry) => {
+        const candidate = entry as Record<string, unknown>;
+        const items = Array.isArray(candidate?.items) ? (candidate.items as unknown[]) : [];
+        return {
+          title: String(candidate?.title ?? ''),
+          items: items.map((item) => String(item ?? ''))
+        };
+      })
+    : [];
 
   return (
     <div className="mx-auto max-w-5xl space-y-16 px-4 py-16">
