@@ -7,7 +7,11 @@ import { Locale, locales } from '@/i18n/config';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://hb-advisory.com.br';
+const ogImage = new URL('/og-default.png', siteUrl).toString();
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'HB Intellicore | Guarda-chuva de hubs HB Advisory',
     template: '%s | HB Intellicore'
@@ -20,11 +24,11 @@ export const metadata: Metadata = {
     title: 'HB Intellicore',
     description:
       'Guarda-chuva HB Intellicore: hubs de inteligência regulatória, agro e inovação com dados confiáveis e automação.',
-    url: 'https://hb-advisory.com.br',
+    url: siteUrl,
     siteName: 'HB Intellicore',
     images: [
       {
-        url: '/og-default.png',
+        url: ogImage,
         width: 1200,
         height: 630,
         alt: 'HB Intellicore'
@@ -35,7 +39,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'HB Intellicore',
     description:
-      'Guarda-chuva HB Intellicore: hubs de inteligência regulatória, agro e inovação com dados confiáveis e automação.'
+      'Guarda-chuva HB Intellicore: hubs de inteligência regulatória, agro e inovação com dados confiáveis e automação.',
+    images: [ogImage]
   }
 };
 
