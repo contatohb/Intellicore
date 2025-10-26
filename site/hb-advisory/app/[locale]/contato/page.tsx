@@ -11,7 +11,7 @@ type ContactChannel = {
 export default async function ContactPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'contact' });
-  const rawChannels = t('channels', { returnObjects: true }) as unknown;
+  const rawChannels = t.raw('channels') as unknown;
   const channels = Array.isArray(rawChannels) ? (rawChannels as ContactChannel[]) : [];
 
   return (
