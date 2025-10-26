@@ -2,14 +2,16 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { withLocale } from '@/lib/paths';
 
+type ContactChannel = {
+  title: string;
+  email: string;
+  details: string;
+};
+
 export default async function ContactPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'contact' });
-  const channels = t<any>('channels', { returnObjects: true }) as {
-    title: string;
-    email: string;
-    details: string;
-  }[];
+  const channels = (t('channels', { returnObjects: true }) as unknown as ContactChannel[]) ?? [];
 
   return (
     <div className="mx-auto grid max-w-5xl gap-12 px-4 py-16 md:grid-cols-[2fr,3fr]">
