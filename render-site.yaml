@@ -26,3 +26,5 @@ services:
         sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
         sync: false
+      - key: NEXT_INTL_CONFIG
+        value: ./next-intl.config.mjs
