@@ -1,0 +1,14 @@
+{
+  "palette": {
+    "primary": "#0B1E3F",
+    "secondary": "#0F2E5F",
+    "accent": "#8FB3FF",
+    "neutral": "#F5F0EB",
+    "dark": "#1C1E24"
+  },
+  "typography": {
+    "heading": "'Plus Jakarta Sans', 'Inter', sans-serif",
+    "body": "'Inter', sans-serif"
+  },
+  "notes": "Paleta inspirada na identidade HB Advisory com navy predominante, seguindo referências de interface GreyB."
+}

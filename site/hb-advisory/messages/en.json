@@ -1,0 +1,164 @@
+{
+  "header": {
+    "tagline": "Intelligence | Technology | Training",
+    "cta": "Contact our team",
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "hubs": "Hubs",
+      "events": "Calendar",
+      "courses": "Courses",
+      "contact": "Contact"
+    }
+  },
+  "home": {
+    "badge": "Intelligence + Agro + AI",
+    "title": "Regulatory and agro data with depth and real-time delivery.",
+    "description": "HB Advisory connects reliable pipelines, digital hubs and AI-powered experiences so your team keeps compliance, competitive intelligence and continuous innovation.",
+    "primaryCta": "Book a demo",
+    "secondaryCta": "Explore HB Agro Intel",
+    "proofPoints": [
+      "Integrations with Supabase, Render, Hotmart and Mailgun",
+      "Reports and APIs ready for SEO, marketing and growth",
+      "Public roadmap plus updated SRS/DDS documentation",
+      "Architecture prepared for hundreds of simultaneous users"
+    ],
+    "highlights": [
+      {
+        "title": "RegIntel 2.0",
+        "description": "Robust ingestion of DOU, Querido Diário, AgroAPI and open data with deduplication and audit trail.",
+        "href": "/sobre"
+      },
+      {
+        "title": "HB Agro Intel",
+        "description": "Searchable hub with regulations, manuals and competitor moves for fast decision-making.",
+        "href": "/hubs/agro-intel"
+      },
+      {
+        "title": "AI Copilots",
+        "description": "Automate analysis, summaries and alerts with models tailored to your operation.",
+        "href": "/hubs/ia"
+      }
+    ],
+    "marketing": {
+      "title": "High-performance digital marketing & SEO",
+      "description": "Landing pages, lead automation, structured content, tracking and CRM integrations out of the box.",
+      "points": [
+        "Template optimized for Core Web Vitals (Next.js 14, App Router, Tailwind).",
+        "Modular components to build landing pages in minutes.",
+        "Structured data (schema.org) and automatic sitemap.",
+        "Webhooks synced with Supabase and Mailgun for nurturing."
+      ],
+      "contactIntro": "Reach out to unlock HB Agro Intel or craft digital experiences connected to your stack.",
+      "cta": "Talk to a specialist"
+    },
+    "status": {
+      "title": "Backfill status",
+      "description": "Pipelines run 24/7. Get hourly email updates or follow the upcoming dashboards.",
+      "items": [
+        "DOU 1990+ — continuous processing via INLabs/Ro-dou",
+        "Querido Diário — new municipalities and 2015+ history",
+        "AgroAPI — credentials configured, first ingestion in progress",
+        "Bioinsumos — adjusting endpoint for classes and categories"
+      ],
+      "note": "Send feedback to hb-agro-intel@hb-advisory.com.br and join the public roadmap."
+    }
+  },
+  "footer": {
+    "newsletterTitle": "Subscribe to our newsletter",
+    "newsletterDescription": "Receive regulatory insights and the sector calendar.",
+    "emailPlaceholder": "you@company.com",
+    "newsletterCta": "Subscribe",
+    "privacy": "We respect your privacy. Unsubscribe at any time.",
+    "summary": "Regulatory, agro and AI automations so teams can turn data into reliable actions.",
+    "copyright": "All rights reserved.",
+    "menu": {
+      "about": "About",
+      "careers": "Careers",
+      "privacy": "Privacy policy",
+      "agro": "HB Agro Intel",
+      "events": "Sector calendar",
+      "courses": "Courses & Certifications",
+      "ai": "AI & Copilots"
+    }
+  },
+  "about": {
+    "title": "Why we exist",
+    "section1": "HB Advisory was founded by specialists in regulation, data and technology to turn public and private data into actionable decisions with safety and speed. We focus on industries that rely on compliance and competitive intelligence, starting with agro.",
+    "section2": "We operate with documented pipelines, monitoring and infrastructure that supports growth without friction. Collaboration with client teams is key and we provide the materials needed so external partners can also contribute.",
+    "values": [
+      {
+        "title": "Data reliability",
+        "description": "Auditable pipelines, versioning and end-to-end traceability."
+      },
+      {
+        "title": "Purposeful speed",
+        "description": "Automation with AI where it truly impacts—always with human oversight."
+      },
+      {
+        "title": "Transparency & partnership",
+        "description": "Open documentation, public roadmap and co-creation with our clients."
+      }
+    ],
+    "pillars": [
+      {
+        "title": "RegIntel 2.0",
+        "items": [
+          "Historical reprocessing of DOU, Querido Diário and open data",
+          "Integrations with Supabase, Render, Postgres and BI",
+          "Email alerts and APIs for digital squads"
+        ]
+      },
+      {
+        "title": "HB Agro Intel",
+        "items": [
+          "Collection of manuals, guides, competitors and events",
+          "Regulatory calendar and competitor monitoring",
+          "Dashboards for commercial and R&D teams"
+        ]
+      },
+      {
+        "title": "AI Experiences",
+        "items": [
+          "Copilots for regulatory summaries",
+          "Automatic risk classification",
+          "APIs for chatbots and internal automations"
+        ]
+      }
+    ],
+    "careersTitle": "Building the right team",
+    "careersDescription": "We are assembling a network of experts in regulation, data engineering, UX and growth. Interested in contributing? Email your portfolio or product idea to <email>talentos@hb-advisory.com.br</email>.",
+    "careersCta": "I want to collaborate",
+    "downloadCta": "Download founder CV",
+    "pillarsTitle": "Operating pillars"
+  },
+  "contact": {
+    "title": "Let's talk?",
+    "description": "Tell us how we can help. Within 24 business hours we reply with next steps, calendar options or HB Agro Intel access.",
+    "form": {
+      "name": "Name",
+      "email": "Corporate email",
+      "company": "Company",
+      "message": "Message",
+      "submit": "Send message",
+      "privacy": "We use your data only to reply to your request. Review our <privacy>privacy policy</privacy>."
+    },
+    "channels": [
+      {
+        "title": "Sales",
+        "email": "contato@hb-advisory.com.br",
+        "details": "Presentations, proposals and integrations with your digital stack."
+      },
+      {
+        "title": "Executive contact",
+        "email": "hudsonborges@hb-advisory.com.br",
+        "details": "Strategic alignment, press and institutional relations."
+      },
+      {
+        "title": "Finance",
+        "email": "financeiro@hb-advisory.com.br",
+        "details": "Billing, contracts, terms and administrative support."
+      }
+    ]
+  }
+}
