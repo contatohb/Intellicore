@@ -21,17 +21,15 @@ def _build_target(path: str, query: str) -> str:
     return base
 
 
-@app.middleware("http")
-async def redirect_all(request: Request, call_next):
-    # health checks from Render hit /.well-known or /health; keep them local.
-    path = request.url.path or "/"
-    if path.startswith("/internal") or path.startswith("/health"):
-        return await call_next(request)
-    target = _build_target(path, request.url.query)
+@app.api_route("/", methods=["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], include_in_schema=False)
+async def root_redirect(request: Request):
+    target = _build_target("", request.url.query)
     return RedirectResponse(url=target, status_code=307)
 
 
-@app.get("/health", include_in_schema=False)
-async def health() -> PlainTextResponse:
-    return PlainTextResponse("ok")
-
+@app.api_route("/{path:path}", methods=["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], include_in_schema=False)
+async def wildcard_redirect(path: str, request: Request):
+    if path.lower().startswith("health"):
+        return PlainTextResponse("ok")
+    target = _build_target(path, request.url.query)
+    return RedirectResponse(url=target, status_code=307)
