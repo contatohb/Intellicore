@@ -3,33 +3,33 @@ from __future__ import annotations
 import os
 from urllib.parse import urlencode
 
-from fastapi import FastAPI, Request
-from fastapi.responses import RedirectResponse, PlainTextResponse
+from flask import Flask, Request, Response, redirect, request
 
 NEXT_SITE_URL = os.getenv("NEXT_PUBLIC_SITE_URL", "https://hb-advisory-site.onrender.com").rstrip("/")
 
-app = FastAPI(title="HB Advisory Redirect")
+app = Flask(__name__)
 
 
-def _build_target(path: str, query: str) -> str:
+def _target(path: str, query: str) -> str:
     path = path.lstrip("/")
-    base = NEXT_SITE_URL
+    url = NEXT_SITE_URL
     if path:
-        base = f"{base}/{path}"
+        url = f"{url}/{path}"
     if query:
-        base = f"{base}?{query}"
-    return base
+        url = f"{url}?{query}"
+    return url
 
 
-@app.api_route("/", methods=["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], include_in_schema=False)
-async def root_redirect(request: Request):
-    target = _build_target("", request.url.query)
-    return RedirectResponse(url=target, status_code=307)
+@app.route("/health", methods=["GET", "HEAD"])
+def health() -> Response:
+    return Response("ok", mimetype="text/plain")
 
 
-@app.api_route("/{path:path}", methods=["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], include_in_schema=False)
-async def wildcard_redirect(path: str, request: Request):
-    if path.lower().startswith("health"):
-        return PlainTextResponse("ok")
-    target = _build_target(path, request.url.query)
-    return RedirectResponse(url=target, status_code=307)
+@app.route("/", defaults={"path": ""}, methods=["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
+@app.route("/<path:path>", methods=["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
+def redirect_all(path: str) -> Response:
+    if path.startswith(".well-known"):
+        return Response("ok", mimetype="text/plain")
+    target = _target(path, request.query_string.decode("utf-8"))
+    # 307 preserva método original (POST, etc.)
+    return redirect(target, code=307)
