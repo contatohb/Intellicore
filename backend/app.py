@@ -1,33 +1,37 @@
-import os, logging, importlib, pkgutil
-from flask import Flask, jsonify
+from __future__ import annotations
 
-def create_app() -> Flask:
-    app = Flask(__name__)
+import os
+from urllib.parse import urlencode
 
-    @app.get("/health")
-    def health():
-        # nunca depende de nada externo
-        return jsonify(ok=True), 200
+from fastapi import FastAPI, Request
+from fastapi.responses import RedirectResponse, PlainTextResponse
 
-    # Registro tolerante a falhas
-    if os.getenv("REGISTER_BLUEPRINTS", "1") == "1":
-        try:
-            register_blueprints(app)
-        except Exception as e:
-            logging.exception("Blueprint bootstrap non-fatal: %s", e)
-    return app
+NEXT_SITE_URL = os.getenv("NEXT_PUBLIC_SITE_URL", "https://hb-advisory-site.onrender.com").rstrip("/")
 
-def register_blueprints(app: Flask):
-    from backend import routes  # pacote com as rotas
-    for _, name, _ in pkgutil.iter_modules(routes.__path__):
-        if name.startswith("_") or name == "health":
-            continue
-        mod = importlib.import_module(f"backend.routes.{name}")
-        bp = getattr(mod, "bp", None) or getattr(mod, f"{name}_api", None)
-        if bp is None:
-            logging.warning("Skipping %s: no blueprint named 'bp' or '%s_api'", name, name)
-            continue
-        app.register_blueprint(bp)
-        logging.info("Registered blueprint: %s", name)
+app = FastAPI(title="HB Advisory Redirect")
 
-app = create_app()
+
+def _build_target(path: str, query: str) -> str:
+    path = path.lstrip("/")
+    base = NEXT_SITE_URL
+    if path:
+        base = f"{base}/{path}"
+    if query:
+        base = f"{base}?{query}"
+    return base
+
+
+@app.middleware("http")
+async def redirect_all(request: Request, call_next):
+    # health checks from Render hit /.well-known or /health; keep them local.
+    path = request.url.path or "/"
+    if path.startswith("/internal") or path.startswith("/health"):
+        return await call_next(request)
+    target = _build_target(path, request.url.query)
+    return RedirectResponse(url=target, status_code=307)
+
+
+@app.get("/health", include_in_schema=False)
+async def health() -> PlainTextResponse:
+    return PlainTextResponse("ok")
+
