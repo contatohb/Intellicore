@@ -29,4 +29,5 @@ def redirect_all(path: str):
     if path.startswith(".well-known"):
         return Response("ok", mimetype="text/plain")
     target = _target(path, request.query_string.decode("utf-8"))
+    print(f"Redirecting '{path}' to '{target}'", flush=True)
     return redirect(target, code=307)
