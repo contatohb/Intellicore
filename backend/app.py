@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import os
-from urllib.parse import urlencode
+from flask import Flask, redirect, request, Response
 
 NEXT_SITE_URL = os.getenv("NEXT_PUBLIC_SITE_URL", "https://hb-advisory-site.onrender.com").rstrip("/")
+
+app = Flask(__name__)
 
 
 def _target(path: str, query: str) -> str:
@@ -16,23 +18,15 @@ def _target(path: str, query: str) -> str:
     return url
 
 
-def app(environ, start_response):
-    path = environ.get("PATH_INFO", "")
-    method = environ.get("REQUEST_METHOD", "GET").upper()
-    if path.startswith("/health"):
-        start_response("200 OK", [("Content-Type", "text/plain"), ("Content-Length", "2")])
-        return [b"ok"]
+@app.route("/health", methods=["GET", "HEAD"])
+def health() -> Response:
+    return Response("ok", mimetype="text/plain")
 
-    query = environ.get("QUERY_STRING", "")
-    target = _target(path, query)
-    status = "307 Temporary Redirect"
-    headers = [("Location", target)]
-    if method != "HEAD":
-        body = f"Redirecting to {target}".encode("utf-8")
-        headers.append(("Content-Type", "text/plain; charset=utf-8"))
-        headers.append(("Content-Length", str(len(body))))
-        start_response(status, headers)
-        return [body]
-    headers.append(("Content-Length", "0"))
-    start_response(status, headers)
-    return [b""]
+
+@app.route("/", defaults={"path": ""}, methods=["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
+@app.route("/<path:path>", methods=["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
+def redirect_all(path: str):
+    if path.startswith(".well-known"):
+        return Response("ok", mimetype="text/plain")
+    target = _target(path, request.query_string.decode("utf-8"))
+    return redirect(target, code=307)
