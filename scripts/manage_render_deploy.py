@@ -16,19 +16,16 @@ import requests
 RENDER_API = "https://api.render.com/v1"
 DEFAULT_ENDPOINTS = ("/health", "/test-db")
 POLL_INTERVAL = 10  # segundos
-# Aumentado para 30 minutos para tolerar builds mais longos
-POLL_TIMEOUT = 30 * 60  # 30 minutos
+POLL_TIMEOUT = 15 * 60  # 15 minutos
 
 
 class DeployError(RuntimeError):
     pass
 
 
-def require_env(key: str, *, optional: bool = False, default: str | None = None) -> str | None:
+def require_env(key: str) -> str:
     value = os.getenv(key)
     if not value:
-        if optional:
-            return default
         raise DeployError(f"Variável obrigatória '{key}' não definida.")
     return value
 
@@ -39,85 +36,23 @@ def trigger_deploy(api_key: str, service_id: str) -> str:
     response = requests.post(url, headers=headers, timeout=30)
     if response.status_code >= 300:
         raise DeployError(f"Falha ao criar deploy: {response.status_code} {response.text}")
-    try:
-        data = response.json()
-    except Exception:
-        data = None
-    deploy_id = (data or {}).get("id") if isinstance(data, dict) else None
+    data = response.json()
+    deploy_id = data.get("id")
     if not deploy_id:
-        # Fallback: listar deploys do serviço e pegar o mais recente
-        lst = list_service_deploys(api_key, service_id)
-        if not lst:
-            raise DeployError("Não foi possível identificar o deploy recém-criado.")
-        first = lst[0]
-        deploy_id = first.get("id") or first.get("deployId") or ""
-        if not deploy_id:
-            raise DeployError(f"Lista de deploys sem id: {lst[:1]}")
+        raise DeployError(f"Resposta inesperada ao criar deploy: {data}")
     print(f"Deploy {deploy_id} criado.")
     return deploy_id
 
 
-def list_service_deploys(api_key: str, service_id: str) -> list:
-    url = f"{RENDER_API}/services/{service_id}/deploys?limit=5"
-    headers = {"Authorization": f"Bearer {api_key}"}
-    resp = requests.get(url, headers=headers, timeout=30)
-    if resp.status_code >= 300:
-        raise DeployError(f"Erro ao listar deploys: {resp.status_code} {resp.text}")
-    try:
-        data = resp.json()
-    except Exception:
-        data = []
-    if not isinstance(data, list):
-        return []
-    normalized = []
-    for item in data:
-        if isinstance(item, dict) and "deploy" in item and isinstance(item["deploy"], dict):
-            normalized.append(item["deploy"])
-        elif isinstance(item, dict):
-            normalized.append(item)
-    return normalized
-
-
-def wait_for_deploy(api_key: str, deploy_id: str, service_id: str | None = None) -> Tuple[str, str]:
+def wait_for_deploy(api_key: str, deploy_id: str) -> Tuple[str, str]:
     url = f"{RENDER_API}/deploys/{deploy_id}"
     headers = {"Authorization": f"Bearer {api_key}"}
     start = time.monotonic()
     while True:
         response = requests.get(url, headers=headers, timeout=30)
-        if response.status_code == 404 and service_id:
-            # Fallback: algumas contas/regiões retornam 404 nesse endpoint; buscar pelo serviço
-            svc_url = f"{RENDER_API}/services/{service_id}/deploys?limit=5"
-            svc_resp = requests.get(svc_url, headers=headers, timeout=30)
-            if svc_resp.status_code >= 300:
-                raise DeployError(f"Erro ao consultar deploy (fallback): {svc_resp.status_code} {svc_resp.text}")
-            try:
-                lst = svc_resp.json() or []
-            except Exception:
-                lst = []
-            if not isinstance(lst, list) or not lst:
-                raise DeployError("Fallback não retornou lista de deploys.")
-            # Normaliza como em list_service_deploys
-            normalized = []
-            for item in lst:
-                if isinstance(item, dict) and "deploy" in item and isinstance(item["deploy"], dict):
-                    normalized.append(item["deploy"])
-                elif isinstance(item, dict):
-                    normalized.append(item)
-            if not normalized:
-                raise DeployError("Fallback não retornou itens de deploy normalizados.")
-            data = normalized[0]
-        elif response.status_code >= 300:
+        if response.status_code >= 300:
             raise DeployError(f"Erro ao consultar deploy: {response.status_code} {response.text}")
-        try:
-            data = response.json()
-        except Exception:
-            if service_id:
-                lst = list_service_deploys(api_key, service_id)
-                if not lst:
-                    raise DeployError("Não foi possível ler status do deploy (sem JSON).")
-                data = lst[0]
-            else:
-                raise
+        data = response.json()
         status = data.get("status")
         commit = data.get("commitId", "")
         print(f"Status do deploy {deploy_id}: {status}")
@@ -165,9 +100,9 @@ def notify_failure(
 
 
 def main() -> int:
-    api_key = require_env("RENDER_API_KEY")  # type: ignore[assignment]
-    service_id = require_env("RENDER_SERVICE_ID")  # type: ignore[assignment]
-    base_url = require_env("RENDER_SERVICE_URL", optional=True)
+    api_key = require_env("RENDER_API_KEY")
+    service_id = require_env("RENDER_SERVICE_ID")
+    base_url = require_env("RENDER_SERVICE_URL")
 
     mailgun_domain = require_env("MAILGUN_DOMAIN")
     mailgun_api_key = require_env("MAILGUN_API_KEY")
@@ -179,13 +114,10 @@ def main() -> int:
 
     try:
         deploy_id = trigger_deploy(api_key, service_id)
-        status, commit = wait_for_deploy(api_key, deploy_id, service_id=service_id)
+        status, commit = wait_for_deploy(api_key, deploy_id)
         print(f"Deploy {deploy_id} finalizado com status {status}. Commit {commit}.")
-        if base_url:
-            run_smoke_tests(base_url, endpoint_list)
-            print("Deploy validado com sucesso.")
-        else:
-            print("Base URL não informada; pulando smoke tests.")
+        run_smoke_tests(base_url, endpoint_list)
+        print("Deploy validado com sucesso.")
         return 0
     except DeployError as exc:
         print(f"Erro: {exc}", file=sys.stderr)
