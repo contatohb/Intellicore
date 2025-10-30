@@ -96,10 +96,23 @@ fi
 
 # Fetch secret from 1Password (show helpful error if fails)
 echo "  → Fetching field '$FIELD' from 1Password item..."
-if ! SECRET_VALUE=$(op item get "$RESOLVED_ITEM_ID" --vault "$VAULT" --fields "$FIELD"); then
-  echo "❌ op CLI failed to read field '$FIELD' from item '$ITEM_ID' (id: $RESOLVED_ITEM_ID)"
-  echo "   Ensure the Service Account has 'View items' permission on vault '$VAULT'"
-  exit 1
+if [[ "$AUTH_MODE" == "connect" ]]; then
+  # Connect requires JSON output; parse the field
+  if ! ITEM_JSON=$(op item get "$RESOLVED_ITEM_ID" --vault "$VAULT" --format json); then
+    echo "❌ op CLI failed to read item '$ITEM_ID' (id: $RESOLVED_ITEM_ID) using 1Password Connect"
+    exit 1
+  fi
+  if [[ "$FIELD" == "notesPlain" ]]; then
+    SECRET_VALUE=$(echo "$ITEM_JSON" | jq -r '.notesPlain // empty')
+  else
+    SECRET_VALUE=$(echo "$ITEM_JSON" | jq -r --arg f "$FIELD" '.fields[]? | select((.label==$f) or (.id==$f)) | .value // empty' | head -1)
+  fi
+else
+  if ! SECRET_VALUE=$(op item get "$RESOLVED_ITEM_ID" --vault "$VAULT" --fields "$FIELD"); then
+    echo "❌ op CLI failed to read field '$FIELD' from item '$ITEM_ID' (id: $RESOLVED_ITEM_ID)"
+    echo "   Ensure the Service Account has 'View items' permission on vault '$VAULT'"
+    exit 1
+  fi
 fi
 
 if [[ -z "$SECRET_VALUE" ]]; then
