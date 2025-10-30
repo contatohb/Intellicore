@@ -63,22 +63,35 @@ if [[ -z "$GITHUB_ACTIONS" ]]; then
   unset OP_CONNECT_HOST OP_CONNECT_TOKEN 2>/dev/null || true
 fi
 
-# Resolve item: allow passing title or UUID; prefer UUID for reliability
+# Determine auth mode
+AUTH_MODE=""
+if [[ -n "${OP_SERVICE_ACCOUNT_TOKEN:-}" ]]; then
+  AUTH_MODE="service-account"
+elif [[ -n "${OP_CONNECT_HOST:-}" && -n "${OP_CONNECT_TOKEN:-}" ]]; then
+  AUTH_MODE="connect"
+else
+  AUTH_MODE="local"
+fi
+
+# Resolve item depending on auth mode
 RESOLVED_ITEM_ID="$ITEM_ID"
-if [[ ! "$ITEM_ID" =~ ^[a-z0-9]{26}$ ]]; then
-  echo "  → Resolving item ID by title in vault '$VAULT'..."
-  RESOLVED_ITEM_ID=$(op item list --vault "$VAULT" --format json \
-    | jq -r --arg title "$ITEM_ID" '.[] | select(.title == $title) | .id' | head -1)
-  if [[ -z "$RESOLVED_ITEM_ID" || "$RESOLVED_ITEM_ID" == "null" ]]; then
-    echo "❌ Item with title '$ITEM_ID' not found in vault '$VAULT'"
-    # Optional debugging: list titles (safe, no values)
-    if [[ "${OP_DEBUG:-}" == "1" ]]; then
-      echo "Available item titles in '$VAULT':"
-      op item list --vault "$VAULT" --format json | jq -r '.[].title' | sed 's/^/  - /'
+if [[ "$AUTH_MODE" == "connect" ]]; then
+  echo "  → Using 1Password Connect; skipping item list and resolving by title directly"
+else
+  if [[ ! "$ITEM_ID" =~ ^[a-z0-9]{26}$ ]]; then
+    echo "  → Resolving item ID by title in vault '$VAULT'..."
+    if ! RESOLVED_ITEM_ID=$(op item list --vault "$VAULT" --format json \
+      | jq -r --arg title "$ITEM_ID" '.[] | select(.title == $title) | .id' | head -1); then
+      echo "❌ Failed to list items in vault '$VAULT' (auth mode: $AUTH_MODE)"
+      echo "   Tip: With 1Password Connect, 'op item list' is unsupported. Use Service Account or provide item UUID."
+      exit 1
     fi
-    exit 1
+    if [[ -z "$RESOLVED_ITEM_ID" || "$RESOLVED_ITEM_ID" == "null" ]]; then
+      echo "❌ Item with title '$ITEM_ID' not found in vault '$VAULT'"
+      exit 1
+    fi
+    echo "  ✓ Resolved item id: $RESOLVED_ITEM_ID"
   fi
-  echo "  ✓ Resolved item id: $RESOLVED_ITEM_ID"
 fi
 
 # Fetch secret from 1Password (show helpful error if fails)
