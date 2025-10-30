@@ -1,0 +1,46 @@
+name: Send Documentation Email
+
+on:
+  # Manual trigger
+  workflow_dispatch:
+  
+  # Weekly trigger: Every Monday at 10:00 AM BRT (13:00 UTC)
+  # Runs after secrets rotation completes
+  schedule:
+    - cron: '0 13 * * 1'
+
+jobs:
+  send-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests
+      
+      - name: Send documentation via Mailgun
+        env:
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
+          MAILGUN_SENDER: ${{ secrets.MAILGUN_SENDER }}
+          MAILGUN_BASE_URL: ${{ secrets.MAILGUN_BASE_URL }}
+        run: |
+          python3 scripts/send_docs_with_mailgun.py
+      
+      - name: Report status
+        if: always()
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "✅ Documentation sent successfully"
+          else
+            echo "❌ Failed to send documentation"
+            exit 1
+          fi
