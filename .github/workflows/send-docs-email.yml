@@ -25,13 +25,58 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests
-      
-      - name: Send documentation via Mailgun
+
+      - name: Load Mailgun secrets (direct)
+        id: direct
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
           MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
           MAILGUN_SENDER: ${{ secrets.MAILGUN_SENDER }}
           MAILGUN_BASE_URL: ${{ secrets.MAILGUN_BASE_URL }}
+        run: |
+          echo "MAILGUN_API_KEY=${MAILGUN_API_KEY}" >> $GITHUB_ENV
+          echo "MAILGUN_DOMAIN=${MAILGUN_DOMAIN}" >> $GITHUB_ENV
+          echo "MAILGUN_SENDER=${MAILGUN_SENDER}" >> $GITHUB_ENV
+          echo "MAILGUN_BASE_URL=${MAILGUN_BASE_URL}" >> $GITHUB_ENV
+
+      - name: Fallback - Fetch Mailgun from Render
+        if: env.MAILGUN_API_KEY == ''
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          python3 scripts/ci_fetch_mailgun_from_render.py "${RENDER_API_KEY}" "srv-d3r71h56ubrc738fn58g" >> $GITHUB_ENV
+
+      - name: Generate consolidated bundle (artifact)
+        run: |
+          python3 - <<'PY'
+          import os, datetime, pathlib
+          files = [
+            'docs/hb_agro_intel/dds.md',
+            'docs/hb_agro_intel/srs.md',
+            'docs/hb_agro_intel/roadmap.md',
+            'docs/hb_agro_intel/project_status.md',
+            'docs/hb_agro_intel/user_stories.md',
+          ]
+          out_dir = pathlib.Path('docs/hb_agro_intel/exports')
+          out_dir.mkdir(parents=True, exist_ok=True)
+          out = out_dir / f"intellicore_docs_{datetime.date.today().strftime('%Y%m%d')}.md"
+          with open(out, 'w', encoding='utf-8') as w:
+              w.write(f"# Intellicore — Documentação Completa ({datetime.date.today()})\n\n")
+              for p in files:
+                  w.write(f"\n---\n\n## {p.split('/')[-1]}\n\n")
+                  with open(p, 'r', encoding='utf-8') as r:
+                      w.write(r.read())
+                      w.write("\n")
+          print(out)
+          PY
+
+      - name: Upload bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: intellicore-docs
+          path: docs/hb_agro_intel/exports/intellicore_docs_*.md
+
+      - name: Send documentation via Mailgun
         run: |
           python3 scripts/send_docs_with_mailgun.py
       

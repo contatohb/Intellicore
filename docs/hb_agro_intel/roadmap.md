@@ -131,6 +131,21 @@ Construir a plataforma de inteligência regulatória #1 do agronegócio brasilei
 
 ---
 
+## Iniciativas Transversais (Q4 2025)
+
+### Benchmark Concorrentes (Move Analytics, Giagro)
+**Objetivo:** Informar diferenciação de produto e backlog.
+
+**Tarefas:**
+- [ ] Levantar features públicas e posicionamento (site, materiais)
+- [ ] Comparar cobertura de fontes, distribuição, pricing
+- [ ] Documentar em `dds.md` (seção Concorrência) e derivar backlog
+
+**Entregas:**
+- Tabela comparativa e 3 diferenciais claros do HB Agro Intel
+
+---
+
 ## Q1 2026 (Jan-Mar) - Expansão de Fontes e Filtros
 
 ### Sprint 5 (Jan 1-15) - Coleta MAPA

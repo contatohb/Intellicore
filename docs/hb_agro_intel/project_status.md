@@ -114,6 +114,11 @@ Sistema de rotacionamento automático de secrets **100% funcional**. Todos os 5 
 - [ ] Implementar retry logic em coletores DOU
 - [ ] Criar tabela `subscribers` no Supabase
 
+### Novas Diretrizes
+- Incorporar benchmark de concorrentes (Move Analytics, Giagro) no DDS e Roadmap
+- Ajustar pipeline de email para fallback de credenciais do Render no CI
+- Consolidar bundle atualizado de documentação e anexar como artefato no workflow
+
 ---
 
 ## 🐛 Issues Conhecidos

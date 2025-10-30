@@ -318,3 +318,23 @@ op item get "GITHUB - RENDER_API_KEY" --vault "Intellicore Ops" --fields notesPl
 
 **Mantenedores:** Hudson Borges (huddsong@gmail.com, hudsonborges@hb-advisory.com.br)  
 **Repositório:** https://github.com/contatohb/Intellicore
+
+---
+
+## 10. Concorrência e Posicionamento
+
+### 10.1 Panorama
+- Move Analytics (https://moveanalytics.com.br) — foco em monitoramento e analytics setorial; posicionamento de produto com dashboards e relatórios executivos.
+- Giagro — soluções de compliance e registro com ênfase no agronegócio.
+
+### 10.2 Diferenciação do HB Agro Intel
+- Coleta oficial-first: prioriza DOU, MAPA, ANVISA, IBAMA com rastreabilidade total de fonte e hash de conteúdo.
+- Pipeline LLM embutido: resumos executivos e categorização automática orientada a agronegócio (fitossanitário, sanitário, tributário, ambiental, trabalhista).
+- Boletim operacional: distribuição diária/semana via email com métricas (abertura/cliques) e filtros por interesse.
+- Custo enxuto e time-to-value: infraestrutura Render + Supabase com OPEX < R$ 200/mês no MVP.
+
+### 10.3 Benchmark rápido (v1)
+- Cobertura de fontes: HB Agro Intel foca fontes oficiais; concorrentes tendem a mesclar notícias/editoriais.
+- Profundidade de metadados: enriquecimento via LLM e extração de prazos/impacto como primeira-classe.
+- Distribuição: email-first (entregabilidade com Mailgun) com plano de social (X/Twitter) para destaques.
+- Roadmap: API pública e filtros por cultura/produto como alavancas de diferenciação.

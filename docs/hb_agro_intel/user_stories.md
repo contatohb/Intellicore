@@ -409,3 +409,17 @@ _Atualizado em 28/10/2025._
 **Mantenedores:** Hudson Borges (huddsong@gmail.com, hudsonborges@hb-advisory.com.br)  
 **Repositório:** https://github.com/contatohb/Intellicore  
 **Última atualização:** 30/10/2025
+
+---
+
+## Novas Histórias (30/10/2025)
+
+### US21 - Benchmark Concorrentes
+**Como** gestor de produto  
+**Quero** manter um quadro de benchmark atualizado (Move Analytics, Giagro)  
+**Para que** o roadmap priorize diferenciais claros do HB Agro Intel
+
+**Critérios de Aceitação:**
+- [ ] Seção de concorrência no DDS descreve posicionamento e diferenciais
+- [ ] Tabela comparativa armazenada em `docs/`
+- [ ] Pelo menos 3 itens de backlog no Roadmap derivados do benchmark

@@ -213,6 +213,17 @@ Analise a seguinte publicação do DOU e forneça:
 
 ---
 
+### RF11 - Benchmark de Concorrentes (Move Analytics, Giagro)
+**Prioridade:** Média  
+**Descrição:** O sistema deve manter quadro comparativo simples de features e posicionamento de concorrentes para orientar roadmap.
+
+**Critérios de Aceitação:**
+- [ ] Seção "Concorrência e Posicionamento" atualizada no DDS
+- [ ] Registro em `docs/` com links e notas de benchmark (Move Analytics, Giagro)
+- [ ] Itens de backlog derivados no Roadmap (diferenciais)
+
+---
+
 ## 4. Requisitos Não-Funcionais
 
 ### RNF01 - Performance
@@ -410,6 +421,7 @@ Não aplicável (cloud-based).
 | RF05 | - | `.github/workflows/weekly-secrets-rotation.yml` |
 | RF08 | - | `backend/routes/health.py` |
 | RF09 | - | `backend/routes/test_db.py` |
+| RF11 | - | `docs/hb_agro_intel/dds.md` (seção Concorrência) |
 
 ---
 
