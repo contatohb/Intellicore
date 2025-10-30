@@ -55,8 +55,13 @@ echo "  Field: $FIELD"
 echo "  Secret: $SECRET_NAME"
 echo "  Repo: $REPO"
 
-# Unset OP_CONNECT_* to use local op CLI (more reliable for item list/get)
-unset OP_CONNECT_HOST OP_CONNECT_TOKEN 2>/dev/null || true
+# Note: If using 1Password Connect (OP_CONNECT_*), keep those vars
+# If using Service Account (OP_SERVICE_ACCOUNT_TOKEN), it will be used automatically
+# Only unset Connect vars if not in CI/CD environment
+if [[ -z "$GITHUB_ACTIONS" ]]; then
+  # Local execution: prefer op CLI over Connect
+  unset OP_CONNECT_HOST OP_CONNECT_TOKEN 2>/dev/null || true
+fi
 
 # Fetch secret from 1Password
 echo "  → Fetching from 1Password..."
