@@ -63,9 +63,31 @@ if [[ -z "$GITHUB_ACTIONS" ]]; then
   unset OP_CONNECT_HOST OP_CONNECT_TOKEN 2>/dev/null || true
 fi
 
-# Fetch secret from 1Password
-echo "  → Fetching from 1Password..."
-SECRET_VALUE=$(op item get "$ITEM_ID" --vault "$VAULT" --fields "$FIELD" 2>/dev/null || true)
+# Resolve item: allow passing title or UUID; prefer UUID for reliability
+RESOLVED_ITEM_ID="$ITEM_ID"
+if [[ ! "$ITEM_ID" =~ ^[a-z0-9]{26}$ ]]; then
+  echo "  → Resolving item ID by title in vault '$VAULT'..."
+  RESOLVED_ITEM_ID=$(op item list --vault "$VAULT" --format json \
+    | jq -r --arg title "$ITEM_ID" '.[] | select(.title == $title) | .id' | head -1)
+  if [[ -z "$RESOLVED_ITEM_ID" || "$RESOLVED_ITEM_ID" == "null" ]]; then
+    echo "❌ Item with title '$ITEM_ID' not found in vault '$VAULT'"
+    # Optional debugging: list titles (safe, no values)
+    if [[ "${OP_DEBUG:-}" == "1" ]]; then
+      echo "Available item titles in '$VAULT':"
+      op item list --vault "$VAULT" --format json | jq -r '.[].title' | sed 's/^/  - /'
+    fi
+    exit 1
+  fi
+  echo "  ✓ Resolved item id: $RESOLVED_ITEM_ID"
+fi
+
+# Fetch secret from 1Password (show helpful error if fails)
+echo "  → Fetching field '$FIELD' from 1Password item..."
+if ! SECRET_VALUE=$(op item get "$RESOLVED_ITEM_ID" --vault "$VAULT" --fields "$FIELD"); then
+  echo "❌ op CLI failed to read field '$FIELD' from item '$ITEM_ID' (id: $RESOLVED_ITEM_ID)"
+  echo "   Ensure the Service Account has 'View items' permission on vault '$VAULT'"
+  exit 1
+fi
 
 if [[ -z "$SECRET_VALUE" ]]; then
   echo "❌ Failed to extract field '$FIELD' from item '$ITEM_ID'"
