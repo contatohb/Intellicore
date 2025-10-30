@@ -19,6 +19,8 @@ _DEFAULT_BLUEPRINTS: Sequence[BlueprintSpec] = (
     BlueprintSpec("backend.routes.test_db", "test_db", "/"),
     BlueprintSpec("backend.routes.bulletin", "bulletin_api", "/"),
     BlueprintSpec("backend.routes.ingest", "ingest_api", "/"),
+    # Mailgun inbound webhook (added so register_blueprints picks it up)
+    BlueprintSpec("backend.routes.mailgun_inbound", "mailgun_inbound_api", "/"),
 )
 
 
